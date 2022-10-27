@@ -1,3 +1,5 @@
+import { UilShoppingCart } from '@iconscout/react-unicons'
+
 // List that will contain all the links for the navbar
 export const navbarLinks = [
     {
@@ -7,7 +9,7 @@ export const navbarLinks = [
     },
     {
         name: "Cart",
-        icon: true,
+        icon: <UilShoppingCart />,
         link: "/"
     },
 ]
