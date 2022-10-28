@@ -3,8 +3,10 @@
 
 /*  */
 :root {
-    --dark: #161616;
-    --light: #fbfbfb;
+    --dark: #0b0b0b;
+    --light: #efefef;
+    --dark-bg: #1f1f1f;
+    --light-bg: #fbfbfb;
 }
 
 /* Setting up basic styling for all elements in the app  */
@@ -14,3 +16,20 @@
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
 }
+
+/* Container styling start*/
+/* Container styling light mode start */
+.container {
+    min-height: 100vh;
+    width: 100%;
+    background-color: var(--light-bg);
+    transition: background-color .5s ease-in-out;
+}
+/* Container styling light mode end */
+
+/* Container styling dark mode start */
+.dark {
+    background-color: var(--dark-bg);
+    transition: background-color .5s ease-in-out;
+}
+/* Container styling dark mode end */

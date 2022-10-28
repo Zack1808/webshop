@@ -1,5 +1,5 @@
 /* Navbar styling start */
-/* Styling in light mode start */
+/* Navbar styling  light mode start */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -12,10 +12,10 @@
     top: 0;
     box-shadow: 0 0 10px 5px rgba(0, 0, 0, .1);
     z-index: 1;
+    transition: background-color .5s ease-in-out;
 }
 
 /* Navbar logo styling start */
-
 .navbar-logo {
     display: flex;
     align-items: center;
@@ -24,6 +24,7 @@
     height: 100%;
     text-decoration: none;
     color: var(--dark);
+    transition: color .5s ease-in-out;
 }
 
 .logo-text {
@@ -35,12 +36,25 @@
 }
 
 .logo-text h1{
-    font-size: 35px;
+    font-size: 30px;
     letter-spacing: .05em;
 }
 
 .logo-text h6 {
+    font-size: 10px;
     font-weight: 900;
 }
-
 /* Navbar logo styling end */
+/* Navbar styling light mode end */
+
+/* Navbar styling dark mode start */
+.dark .navbar {
+    background-color: var(--dark);
+    transition: background-color .5s ease-in-out;
+}
+
+.dark .navbar-logo {
+    color: var(--light);
+    transition: color .5s ease-in-out;
+}
+/* Navbar styling dark mode end */
