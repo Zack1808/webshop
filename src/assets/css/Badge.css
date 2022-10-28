@@ -10,7 +10,8 @@
 }
 
 .badge a {
-    color: var(--dark)
+    color: var(--dark);
+    transition: color .5s ease-in-out
 }
 
 .display-amount {
@@ -40,7 +41,8 @@
 
 /* Badge styling dark mode start */
 .dark .badge a{
-    color: var(--light)
+    color: var(--light);
+    transition: color .5s ease-in-out
 }
 
 .dark .display-amount {

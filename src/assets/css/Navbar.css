@@ -45,6 +45,14 @@
     font-weight: 900;
 }
 /* Navbar logo styling end */
+
+/* Navbar buttons styling start */
+.navbar-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* Navbar styling light mode end */
 
 /* Navbar styling dark mode start */

@@ -17,7 +17,7 @@ const App = () => {
         // Setting up react-router-dom
         <BrowserRouter basename={process.env.PUBLIC_URL}>
             <div className={`container ${darkMode && 'dark'}`}>
-                <Navbar />
+                <Navbar dark={darkMode} setDark={setDarkMode} />
             </div>
         </BrowserRouter>
     )

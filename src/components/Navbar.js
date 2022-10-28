@@ -5,12 +5,13 @@ import { UilShoppingCart } from '@iconscout/react-unicons'
 
 // Importing costume made components
 import Badge from './Badge'
+import SwitchButton from './SwitchButton'
 
 // Importing the style file
 import '../assets/css/Navbar.css'
 
 // Creating the Navbar component
-const Navbar = () => {
+const Navbar = ({ dark, setDark}) => {
     return (
         <nav className='navbar'>
 
@@ -24,9 +25,12 @@ const Navbar = () => {
             </Link>
             {/* Logo end */}
 
-            <Badge amount={2}>
-                <Link to="/cart"><UilShoppingCart/></Link>
-            </Badge>
+            <div className="navbar-buttons">
+                <SwitchButton toggle={dark} setToggle={setDark} />
+                <Badge amount={2}>
+                    <Link to="/cart"><UilShoppingCart/></Link>
+                </Badge>
+            </div>
 
         </nav>
     )
