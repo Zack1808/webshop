@@ -1,31 +1,46 @@
+/* Navbar styling start */
+/* Styling in light mode start */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 70px;
-    padding: 0 30px
+    padding: 0 30px;
+    width: 100%;
+    background-color: var(--light);
+    position: fixed;
+    top: 0;
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, .1);
+    z-index: 1;
 }
+
+/* Navbar logo styling start */
 
 .navbar-logo {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: .5em;
+    height: 100%;
     text-decoration: none;
-    color: #161616;
+    color: var(--dark);
 }
 
 .logo-text {
     display: flex;
+    height: 100%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
 .logo-text h1{
-    font-size: 40px;
+    font-size: 35px;
+    letter-spacing: .05em;
 }
 
 .logo-text h6 {
     font-weight: 900;
 }
+
+/* Navbar logo styling end */

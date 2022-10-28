@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import VideogameAssetIcon from '@mui/icons-material/VideogameAsset';
+import { UilShoppingCart } from '@iconscout/react-unicons'
 
-// Importing external variables
-import { navbarLinks } from '../assets/data/navbarLinks';
+// Importing costume made components
+import Badge from './Badge'
 
 // Importing the style file
 import '../assets/css/Navbar.css'
@@ -12,6 +13,8 @@ import '../assets/css/Navbar.css'
 const Navbar = () => {
     return (
         <nav className='navbar'>
+
+            {/* Logo start */}
             <Link to="/" className="navbar-logo">
                 <VideogameAssetIcon sx={{ fontSize: "110px" }}/>
                 <div className="logo-text">
@@ -19,11 +22,12 @@ const Navbar = () => {
                     <h6>Where all the gaming tech is in one place</h6>
                 </div>
             </Link>
-            <div className="navbar-link-list">
-                {navbarLinks.map(navbarLink => (
-                    <Link to={navbarLink.link}>{!navbarLink.icon ? navbarLink.name : navbarLink.icon}</Link>
-                ))}
-            </div>
+            {/* Logo end */}
+
+            <Badge amount={2}>
+                <Link to="/cart"><UilShoppingCart/></Link>
+            </Badge>
+
         </nav>
     )
 }
