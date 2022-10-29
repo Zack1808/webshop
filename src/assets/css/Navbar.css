@@ -5,7 +5,7 @@
     justify-content: space-between;
     align-items: center;
     height: 70px;
-    padding: 0 30px;
+    padding: 0 20px;
     width: 100%;
     background-color: var(--light);
     position: fixed;
@@ -66,3 +66,17 @@
     transition: color .5s ease-in-out;
 }
 /* Navbar styling dark mode end */
+
+/* Navbar styling mobile mode start */ 
+@media (max-width: 760px) {
+    /* Navbar logo styling start */
+    .logo-text h1 {
+        font-size: 25px;
+    }
+
+    .logo-text h6 {
+        display: none
+    }
+    /* Navbar logo styling end */
+}
+/* Navbar styling mobile mode end */ 
