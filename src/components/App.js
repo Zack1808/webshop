@@ -6,6 +6,7 @@ import '../assets/css/App.css';
 
 // Importing the costume components
 import Navbar from './Navbar';
+import HomePage from './HomePage'
 
 // Creating the App component
 const App = () => {
@@ -18,6 +19,9 @@ const App = () => {
         <BrowserRouter basename={process.env.PUBLIC_URL}>
             <div className={`container ${darkMode && 'dark'}`}>
                 <Navbar dark={darkMode} setDark={setDarkMode} />
+                <Routes>
+                    <Route exact path='/' element={<HomePage />}/>
+                </Routes>
             </div>
         </BrowserRouter>
     )
