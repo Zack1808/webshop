@@ -5,8 +5,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import '../assets/css/App.css';
 
 // Importing the costume components
+import HomePage from './Pages/HomePage'
 import Navbar from './Navbar';
-import HomePage from './HomePage'
 
 // Creating the App component
 const App = () => {
