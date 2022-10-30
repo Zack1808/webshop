@@ -29,7 +29,7 @@ const light = {
 const SwitchButton = ({ toggle, setToggle}) => {
 
     return (
-        <div className='switch' data-toggle={toggle} onClick={() => setToggle(!toggle)}>
+        <div className='switch' data-toggle={toggle} onClick={() => setToggle(previousState => !previousState)}>
             <motion.div className='handle' layout transition={spring} animate={toggle ? dark : light}/>
         </div>
     )

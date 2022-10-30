@@ -1,6 +1,9 @@
 import React, {useState} from 'react'
 import { UilAngleDown } from '@iconscout/react-unicons'
 
+// Importing the costume made components
+import CategoryList from './CategoryList'
+
 // Importing the style file
 import '../assets/css/Category.css';
 
@@ -14,24 +17,9 @@ const Category = () => {
         <div className="category-container">
             <h3 onClick={() => setToggle(previousState => !previousState)}>Select Category <span className={toggle ? "toggled" : ""}><UilAngleDown /></span></h3>
             <div className={`category-list-container ${toggle && "active"}`}>
-                <div className="products-container">
-                    <h4>Products <span><UilAngleDown /></span></h4>
-                    <div className="product-list-container">
-                        checkbox
-                    </div>
-                </div>
-                <div className="products-container">
-                    <h4>Products <span><UilAngleDown /></span></h4>
-                    <div className="product-list-container">
-                        checkbox
-                    </div>
-                </div>
-                <div className="products-container">
-                    <h4>Products <span><UilAngleDown /></span></h4>
-                    <div className="product-list-container">
-                        checkbox
-                    </div>
-                </div>
+                <CategoryList />
+                <CategoryList />
+                <CategoryList />
             </div>
         </div>
     )

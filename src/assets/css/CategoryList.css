@@ -1,0 +1,30 @@
+/* CategoryList styling start */
+.categorylist-container h4{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: .5em
+}
+
+.categorylist-container h4 span {
+    display: none;
+}
+
+.categorylist-list-container {
+    padding: 10px 0 0;
+}
+
+/* CategoryList stlying mobile mode start */
+@media (max-width: 760px) {
+    .category-list-container h4 span {
+        display: flex;
+    }
+
+    .categorylist-list-container {
+        display: none;
+    }
+
+    .active {
+        display: flex;
+    }
+}

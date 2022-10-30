@@ -33,20 +33,6 @@
     flex-direction: column;
     gap: .7em
 }
-
-.category-list-container h4{
-    display: flex;
-    align-items: center;
-    gap: .5em
-}
-
-.category-list-container h4 span {
-    display: none;
-}
-
-.product-list-container {
-    padding: 10px 0 0;
-}
 /* Category list styling end */
 /* Category styling light mode end */
 
@@ -81,10 +67,6 @@
     .toggled {
         transform: rotate(-180deg);
         transition: transform .01s ease-in-out;
-    }
-
-    .category-list-container h4 span {
-        display: flex;
     }
 }
 /* Category styling mobile mode end */
