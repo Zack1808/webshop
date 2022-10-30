@@ -1,20 +1,22 @@
 import React from 'react';
 
+// Importing costume made components
+import CategorySelectionItem from '../CategorySelectionItem';
+
+
 // Importing the style file 
 import '../../assets/css/CategorySelection.css'
 
 // Creating the CategorySelection component
-const CategorySelection = ({categories}) => {
+const CategorySelection = ({ categories, setSelected}) => {
+
     return (
         <div className="category-selection-container">
-            {categories.map(category => {
-                return (
-                    <div className="category-selection" key={category.id}>
-                        <div className="category-image" style={{ backgroundImage: `url(${category.assets[0].url})`}}></div>
-                        <div className="category-text"><h3>{category.name}</h3></div>
-                    </div>
-                )
-            })}
+                {categories.map(category => {
+                    return (
+                        <CategorySelectionItem category={category} setSelected={setSelected} key={category.id} />
+                    )
+                })}
         </div>
     )
 }

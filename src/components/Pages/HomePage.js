@@ -24,7 +24,7 @@ const HomePage = ({ categories, products}) => {
             <div className="lists-container">
                 {
                     selectedCategory === "...Select Category" ? (
-                        <CategorySelection categories={categories} />
+                        <CategorySelection categories={categories} setSelected={setSelectedCategory} />
                     ) : (
                         <div />
                     )

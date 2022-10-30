@@ -46,7 +46,6 @@ const App = () => {
         // Setting up react-router-dom
         <BrowserRouter basename={process.env.PUBLIC_URL}>
             <div className={`container ${darkMode && 'dark'}`}>
-                {console.log(products, categories)};
                 <Navbar dark={darkMode} setDark={setDarkMode} />
                 <Routes>
                     <Route exact path='/' element={<HomePage categories={categories} products={products} />}/>
