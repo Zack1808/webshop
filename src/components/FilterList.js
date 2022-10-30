@@ -5,10 +5,10 @@ import { UilAngleDown } from '@iconscout/react-unicons'
 import CheckBox from './Checkbox';
 
 // Importing the style file
-import '../assets/css/CategoryList.css';
+import '../assets/css/FilterList.css';
 
 // Creating the CategoryList comoponent
-const CategoryList = ({ categories }) => {
+const FilterList = ({ categories }) => {
 
     // Defining state
     const [toggle, setToggle] = useState(false)
@@ -26,4 +26,4 @@ const CategoryList = ({ categories }) => {
 }
 
 // Exporting the CategoryList
-export default CategoryList;
+export default FilterList;

@@ -2,13 +2,13 @@ import React, {useState} from 'react'
 import { UilAngleDown } from '@iconscout/react-unicons'
 
 // Importing the costume made components
-import CategoryList from './CategoryList'
+import FilterList from './FilterList'
 
 // Importing the style file
-import '../assets/css/Category.css';
+import '../assets/css/Filter.css';
 
 // Creating the Category component
-const Category = ({ categories }) => {
+const Filter = ({ categories }) => {
 
     // Defining state
     const [toggle, setToggle] = useState(false)
@@ -17,13 +17,13 @@ const Category = ({ categories }) => {
         <div className="category-container">
             <h3 onClick={() => setToggle(previousState => !previousState)}>Select Category <span className={toggle ? "toggled" : ""}><UilAngleDown /></span></h3>
             <div className={`category-list-container ${toggle && "active"}`}>
-                <CategoryList categories={categories} />
-                <CategoryList />
-                <CategoryList />
+                <FilterList categories={categories} />
+                <FilterList />
+                <FilterList />
             </div>
         </div>
     )
 }
 
 // Exporting the Category component
-export default Category
+export default Filter

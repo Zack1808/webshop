@@ -1,5 +1,13 @@
+/* HomePage styling start */
 .home-container {
     padding: 70px 20px 0;
+}
+
+.home-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .lists-container {
@@ -7,3 +15,12 @@
     width: 100%;
     justify-content: space-between;
 }
+
+/* HomePage styling mobile mode start */
+@media (max-width: 760px) {
+    .home-header {
+        flex-direction: column-reverse;
+    }
+}
+/* HomePage styling mobile mode end */
+/* HomePage styling end */

@@ -12,7 +12,6 @@ const Search = () => {
                 <button className='btn-search'><UilSearch /></button>
                 <input type="text" name="searchbar" placeholder="Search..." />
             </div>
-            <hr />
         </form>
     )
 }

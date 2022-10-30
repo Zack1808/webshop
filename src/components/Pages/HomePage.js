@@ -1,21 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 // Importing the style file
 import '../../assets/css/HomePage.css'
 
 // Importing the costume made components
 import Search from '../Search'
-import Category from '../Category'
+import Filter from '../Filter'
+import Select from '../Select';
+import CategorySelection from './CategorySelection';
 
 // Creating the HomePage component 
 const HomePage = ({ categories, products}) => {
+
+    // Initializing state 
+    const [selectedCategory, setSelectedCategory] = useState("...Select Category");
+
     return (
         <div className="home-container">
-            <header>
+            <header className="home-header">
+                <Select categories={categories} selected={selectedCategory} setSelected={setSelectedCategory} />
                 <Search />
             </header>
             <div className="lists-container">
-                <Category categories={categories} />
+                {
+                    selectedCategory === "...Select Category" ? (
+                        <CategorySelection categories={categories} />
+                    ) : (
+                        <div />
+                    )
+                }
             </div>
         </div>
     )
