@@ -1,0 +1,47 @@
+/* CheckBox styling start */
+/* CheckBox styling light mode start*/
+.checkbox-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: .5em;
+}
+
+.checkbox {
+    display: flex;
+    height: 25px;
+    width: 25px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid;
+    border-color: var(--dark);
+    border-radius: 10px;
+    color: var(--light);
+    transition: color .5s ease-in-out, border-color .5s ease-in-out, background-color .5s ease-in-out;
+}
+
+.checkbox-active {
+    background-color: var(--dark-containers);
+}
+
+.not-active {
+    display: none;
+}
+
+.checkbox-container label {
+    font-weight: 600;
+}
+/* CheckBox styling light mode end */
+
+/* CheckBox styling dark mode start */
+.dark .checkbox {
+    color: var(--dark);
+    border-color: var(--light);
+    transition: color .5s ease-in-out, border-color .5s ease-in-out, background-color .5s ease-in-out;
+}
+
+.dark .checkbox-active {
+    background-color: var(--light-containers);
+}
+/* Checkbox styling dark mode end */
+/* CheckBox styling end */

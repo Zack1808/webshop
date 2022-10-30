@@ -8,7 +8,7 @@ import CategoryList from './CategoryList'
 import '../assets/css/Category.css';
 
 // Creating the Category component
-const Category = () => {
+const Category = ({ categories }) => {
 
     // Defining state
     const [toggle, setToggle] = useState(false)
@@ -17,7 +17,7 @@ const Category = () => {
         <div className="category-container">
             <h3 onClick={() => setToggle(previousState => !previousState)}>Select Category <span className={toggle ? "toggled" : ""}><UilAngleDown /></span></h3>
             <div className={`category-list-container ${toggle && "active"}`}>
-                <CategoryList />
+                <CategoryList categories={categories} />
                 <CategoryList />
                 <CategoryList />
             </div>

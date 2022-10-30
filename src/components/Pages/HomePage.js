@@ -8,12 +8,14 @@ import Search from '../Search'
 import Category from '../Category'
 
 // Creating the HomePage component 
-const HomePage = () => {
+const HomePage = ({ categories, products}) => {
     return (
         <div className="home-container">
-            <Search />
+            <header>
+                <Search />
+            </header>
             <div className="lists-container">
-                <Category />
+                <Category categories={categories} />
             </div>
         </div>
     )

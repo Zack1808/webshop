@@ -11,7 +11,10 @@
 }
 
 .categorylist-list-container {
-    padding: 10px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+    padding: 10px 0  0 10px;
 }
 
 /* CategoryList stlying mobile mode start */
@@ -28,3 +31,5 @@
         display: flex;
     }
 }
+/* CategoryList styling mobile mode end */
+/* CategoryList styling end */
