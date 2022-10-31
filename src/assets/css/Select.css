@@ -34,7 +34,8 @@
     justify-content: center;
     transform-origin: top;
     transform: scale(1, 0);
-    transition: transform .3s
+    transition: transform .3s;
+    z-index: 1;
 }
 
 .dropdown-visible {
