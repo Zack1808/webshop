@@ -1,46 +1,42 @@
 /* CheckBox styling start */
 /* CheckBox styling light mode start*/
-.checkbox-container {
+.radio-container {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     gap: .5em;
 }
 
-.checkbox {
+.radio {
     display: flex;
-    height: 20px;
-    width: 20px;
+    height: 15px;
+    width: 15px;
     justify-content: center;
     align-items: center;
     border: 1px solid;
     border-color: var(--dark);
-    border-radius: 5px;
+    border-radius: 50%;
     color: var(--light);
     transition: color .5s ease-in-out, border-color .5s ease-in-out, background-color .5s ease-in-out;
 }
 
-.checkbox-active {
+.radio-active {
     background-color: var(--dark-containers);
 }
 
-.not-active {
-    display: none;
-}
-
-.checkbox-container label {
+.radio-container label {
     font-weight: 600;
 }
 /* CheckBox styling light mode end */
 
 /* CheckBox styling dark mode start */
-.dark .checkbox {
+.dark .radio {
     color: var(--dark);
     border-color: var(--light);
     transition: color .5s ease-in-out, border-color .5s ease-in-out, background-color .5s ease-in-out;
 }
 
-.dark .checkbox-active {
+.dark .radio-active {
     background-color: var(--light-containers);
 }
 /* Checkbox styling dark mode end */

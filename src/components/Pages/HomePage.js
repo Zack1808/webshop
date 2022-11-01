@@ -44,7 +44,7 @@ const HomePage = ({ categories, products}) => {
         }
         return "...Select Category";
     } 
-
+    
     // Varialbe that will hold the name of the selected category
     let categoryName = displayCategory(selectedCategory)
 
