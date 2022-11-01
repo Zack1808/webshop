@@ -10,11 +10,35 @@ import Select from '../Select';
 import CategorySelection from './CategorySelection';
 
 // Creating the HomePage component 
-const HomePage = ({ categories, products}) => {
+const HomePage = ({ categories, products, setProducts}) => {
 
     // Initializing state 
     const [selectedCategory, setSelectedCategory] = useState("");
     const [subCategories, setSubCategories] = useState([]);
+    const [selectedSubCategories, setSelectedSubCategories] = useState([])
+    const [sortLowestToHighest, setSortLowestToHighest] = useState(true)
+    const [sortHighestToLowest, setSortHighestToLowest] = useState(false);
+
+    // sorting elements
+    const sorting = [
+        {
+            id: 1,
+            name: "Sort lowest to highest price",
+            active: sortLowestToHighest,
+            setActive: setSortLowestToHighest,
+            deselect: [setSortHighestToLowest]
+        },
+        {
+            id: 2,
+            name: "Sort highest to lowest price",
+            active: sortHighestToLowest,
+            setActive: setSortHighestToLowest,
+            deselect: [setSortLowestToHighest]
+        }
+    ]
+
+    // storing the state data in a variable, so that it can be sorted
+    const sortedProducts = products
 
     // Fetching the subcategories once every time a new category is selected
     useEffect(() => {
@@ -44,6 +68,12 @@ const HomePage = ({ categories, products}) => {
         }
         return "...Select Category";
     } 
+
+    // Function that will render the sorted list
+    const renderProductList = () => {
+        if(sortLowestToHighest) return sortedProducts.sort((a, b) => (a.price.raw > b.price.raw) ? 1 : -1).map(product => product.name);
+        return sortedProducts.sort((a, b) => (a.price.raw < b.price.raw) ? 1 : -1).map(product => product.name);
+    }
     
     // Varialbe that will hold the name of the selected category
     let categoryName = displayCategory(selectedCategory)
@@ -59,7 +89,10 @@ const HomePage = ({ categories, products}) => {
                     !selectedCategory ? (
                         <CategorySelection categories={categories} setSelected={setSelectedCategory} />
                     ) : (
-                        <Filter categories={subCategories} />
+                        <>
+                            <Filter categories={subCategories} sorting={sorting} />
+                            {renderProductList()}
+                        </>
                     )
                 }
             </div>

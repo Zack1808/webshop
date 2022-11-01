@@ -48,7 +48,7 @@ const App = () => {
             <div className={`container ${darkMode && 'dark'}`}>
                 <Navbar dark={darkMode} setDark={setDarkMode} />
                 <Routes>
-                    <Route exact path='/' element={<HomePage categories={categories} products={products} />}/>
+                    <Route exact path='/' element={<HomePage categories={categories} products={products} setProducts={setProducts} />}/>
                 </Routes>
             </div>
         </BrowserRouter>
