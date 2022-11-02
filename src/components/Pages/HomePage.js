@@ -38,7 +38,7 @@ const HomePage = ({ categories, products, setProducts}) => {
     ]
 
     // storing the state data in a variable, so that it can be sorted
-    const sortedProducts = products
+    var sortedProducts = products
 
     // Fetching the subcategories once every time a new category is selected
     useEffect(() => {
@@ -71,8 +71,12 @@ const HomePage = ({ categories, products, setProducts}) => {
 
     // Function that will render the sorted list
     const renderProductList = () => {
-        if(sortLowestToHighest) return sortedProducts.sort((a, b) => (a.price.raw > b.price.raw) ? 1 : -1).map(product => product.name);
-        return sortedProducts.sort((a, b) => (a.price.raw < b.price.raw) ? 1 : -1).map(product => product.name);
+        if(sortLowestToHighest) sortedProducts.sort((a, b) => (a.price.raw > b.price.raw) ? 1 : -1);
+        else sortedProducts.sort((a, b) => (a.price.raw < b.price.raw) ? 1 : -1);
+        sortedProducts = sortedProducts.filter(sortedProduct => {
+            if(sortedProduct.categories.find(category => category.id === selectedCategory)) return sortedProduct
+        });
+        return sortedProducts.map(sortedProduct => sortedProduct.name)
     }
     
     // Varialbe that will hold the name of the selected category
@@ -90,8 +94,8 @@ const HomePage = ({ categories, products, setProducts}) => {
                         <CategorySelection categories={categories} setSelected={setSelectedCategory} />
                     ) : (
                         <>
-                            <Filter categories={subCategories} sorting={sorting} />
-                            {renderProductList()}
+                            <Filter categories={subCategories} setSubCategories={setSelectedSubCategories} selected={selectedSubCategories} sorting={sorting} />
+                            {/* {renderProductList()} */}
                         </>
                     )
                 }

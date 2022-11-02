@@ -8,7 +8,7 @@ import FilterList from './FilterList'
 import '../assets/css/Filter.css';
 
 // Creating the Category component
-const Filter = ({ categories, sorting }) => {    
+const Filter = ({ categories, sorting, setSubCategories, selected }) => {    
 
     // Setting up the state
     const [toggle, setToggle] = useState(false)
@@ -17,7 +17,7 @@ const Filter = ({ categories, sorting }) => {
         <div className="category-container">
             <h3 onClick={() => setToggle(previousState => !previousState)}>Select Category <span className={toggle ? "toggled" : ""}><UilAngleDown /></span></h3>
             <div className={`category-list-container ${toggle && "active"}`}>
-                <FilterList items={categories} title="Brand" multiselect />
+                <FilterList items={categories} setSubCategories={setSubCategories} selected={selected} title="Brand" multiselect />
                 <FilterList items={sorting} title="Display"  />
             </div>
         </div>
