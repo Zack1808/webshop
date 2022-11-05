@@ -45,7 +45,7 @@ const HomePage = () => {
     ];
 
     // Variable that will contain all selected products
-    let selectedProducts;
+    let selectedProducts = [];
 
     // Variable definition end
 
@@ -63,14 +63,12 @@ const HomePage = () => {
         setSelectedSubCategories([])
     }, [selectedCategory]);
 
-    useEffect(() => {
-        console.log(selectedSubCategories)
-    }, [selectedSubCategories])
-
     // Fetching the products with the same category
     useEffect(() => {
          fetchProducts();
-    }, [selectedCategory, sortLowestToHighest]);
+         selectedProducts = renderProducts();
+         console.log(selectedProducts)
+    }, [selectedCategory, sortLowestToHighest, selectedSubCategories]);
 
     // Function that will fetch all awailable categories
     const fetchCategories = async () => {
@@ -123,6 +121,18 @@ const HomePage = () => {
         }
         return "...Select Category";
     } 
+
+    const renderProducts = () => {
+        let sel = [];
+        products.map(product => {
+            product.categories.map(category => {
+                for(let i = 0; i < selectedSubCategories.length; i++) {
+                    if(selectedSubCategories[i] === category.slug) sel.push(product)
+                }
+            })
+        });
+        return sel
+    }
 
     const removeSubCategory = (slug) => {
         let removed = [...selectedSubCategories];
