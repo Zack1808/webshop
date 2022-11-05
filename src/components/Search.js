@@ -8,10 +8,14 @@ import '../assets/css/Search.css'
 const Search = () => {
     return (
         <form className="search-container">
+
+            {/* Searchbar start  */}
             <div className="input-container">
                 <button className='btn-search'><UilSearch /></button>
                 <input type="text" name="searchbar" placeholder="Search..." />
             </div>
+            {/* Searchbar end */}
+
         </form>
     )
 }

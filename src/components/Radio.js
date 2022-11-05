@@ -8,10 +8,7 @@ const radio = ({ item }) => {
 
     // Funciton that will deselect all other Radiobuttons and select only the selected one
     const handleClick = () => {
-        item.setActive(true);
-        item.deselect.map(i => 
-            i(false)
-        )
+        item.setActive();
     }
 
     return (

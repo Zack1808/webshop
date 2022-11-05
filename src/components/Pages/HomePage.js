@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 
 // Importing the style file
 import '../../assets/css/HomePage.css'
@@ -9,8 +9,10 @@ import Filter from '../Filter'
 import Select from '../Select';
 import CategorySelection from './CategorySelection';
 
-// Importing the api functions
-import { commerce } from '../../api/commerceInit';
+// Importing fetching functions
+import { fetchCategories, fetchProducts, fetchSubCategories } from '../../assets/data/fetchingFunctions';
+import { renderCategory, renderProducts } from '../../assets/data/renderFunctions';
+import { sortProducts } from '../../assets/data/helperFunctions';
 
 // Creating the HomePage component 
 const HomePage = () => {
@@ -24,7 +26,6 @@ const HomePage = () => {
     const [subCategories, setSubCategories] = useState([]);
     const [selectedSubCategories, setSelectedSubCategories] = useState([])
     const [sortLowestToHighest, setSortLowestToHighest] = useState(true)
-    const [sortHighestToLowest, setSortHighestToLowest] = useState(false);
 
     // Sorting elements
     const sorting = [
@@ -32,17 +33,18 @@ const HomePage = () => {
             id: 1,
             name: "Sort lowest to highest price",
             active: sortLowestToHighest,
-            setActive: setSortLowestToHighest,
-            deselect: [setSortHighestToLowest]
+            setActive: function(){setSortLowestToHighest(true)},
         },
         {
             id: 2,
             name: "Sort highest to lowest price",
-            active: sortHighestToLowest,
-            setActive: setSortHighestToLowest,
-            deselect: [setSortLowestToHighest]
+            active: !sortLowestToHighest,
+            setActive: function(){setSortLowestToHighest(false)}
         }
     ];
+
+    // Varialbe that will hold the name of the selected category
+    let categoryName = renderCategory(selectedCategory, categories)
 
     // Variable that will contain all selected products
     let selectedProducts = [];
@@ -50,89 +52,38 @@ const HomePage = () => {
     // Variable definition end
 
 
-    // Fetching functions start
+
+    // useEffect functions start
 
     // Fetching the products from the commercejs database as the page is loaded
     useEffect(() => {
-        fetchCategories();
+        fetchCategories(setCategories);
     }, []);
 
     // Fetching the subcategories once every time a new category is selected
     useEffect(() => {
-        setSubCategories(fetchSubCategories(selectedCategory))
+        setSubCategories(fetchSubCategories(selectedCategory, categories))
         setSelectedSubCategories([])
+
+        // disablbling the dependency-missing-warning message
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedCategory]);
 
     // Fetching the products with the same category
     useEffect(() => {
-         fetchProducts();
-         selectedProducts = renderProducts();
-         console.log(selectedProducts)
-    }, [selectedCategory, sortLowestToHighest, selectedSubCategories]);
+        fetchProducts(selectedCategory, setProducts);
+    }, [selectedCategory]);
 
-    // Function that will fetch all awailable categories
-    const fetchCategories = async () => {
-        const { data } = await commerce.categories.list();
-        setCategories(data)
-    }
+    // Sorting the product list
+    useEffect(() => {
+        sortProducts(sortLowestToHighest, products,  setProducts);
+    }, [ sortLowestToHighest]);
 
-    // Function that will fetch all the products that have the selected category
-    const fetchProducts = async () => {
-        if(sortLowestToHighest){
-            const { data } = await commerce.products.list({
-                category_id: selectedCategory,
-                sortBy: 'price',
-                sortDirection: 'asc'
-            })
-            setProducts(data)
-        }
-        else {
-            const { data } = await commerce.products.list({
-                category_id: selectedCategory,
-                sortBy: 'price',
-                sortDirection: 'desc'
-            })
-            setProducts(data)
-        }
-    }
+    // useEffect functions end
+   
 
-    // Function that will fetch the subcategories
-    const fetchSubCategories = (id) => {
-        if(selectedCategory) {
-            let index;
-            for(var i = 0; i < categories.length; i++) {
-                if(categories[i].id === id) index = i;
-            }
-            return categories[index].children;
-        }
-        return [];
-    }
 
-    // Rendering functions start
-
-    // Function that will display the selected category
-    const displayCategory = (id) => {
-        if(selectedCategory) {
-            let index;
-            for(var i = 0; i < categories.length; i++) {
-                if(categories[i].id === id) index = i;
-            }
-            return categories[index].name;
-        }
-        return "...Select Category";
-    } 
-
-    const renderProducts = () => {
-        let sel = [];
-        products.map(product => {
-            product.categories.map(category => {
-                for(let i = 0; i < selectedSubCategories.length; i++) {
-                    if(selectedSubCategories[i] === category.slug) sel.push(product)
-                }
-            })
-        });
-        return sel
-    }
+    // State switching functions start
 
     const removeSubCategory = (slug) => {
         let removed = [...selectedSubCategories];
@@ -147,10 +98,9 @@ const HomePage = () => {
         setSelectedSubCategories(added)
     }
 
-    // Rendering functions end
+    // State switching functions end
 
-    // Varialbe that will hold the name of the selected category
-    let categoryName = displayCategory(selectedCategory)
+
 
     return (
         <div className="home-container">

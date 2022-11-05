@@ -25,12 +25,14 @@ const Navbar = ({ dark, setDark}) => {
             </Link>
             {/* Logo end */}
 
+            {/* Button display start */}
             <div className="navbar-buttons">
                 <SwitchButton toggle={dark} setToggle={setDark} />
                 <Badge amount={2}>
                     <Link to="/cart"><UilShoppingCart/></Link>
                 </Badge>
             </div>
+            {/* Button display end */}
 
         </nav>
     )

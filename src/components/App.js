@@ -20,9 +20,13 @@ const App = () => {
         <BrowserRouter basename={process.env.PUBLIC_URL}>
             <div className={`container ${darkMode && 'dark'}`}>
                 <Navbar dark={darkMode} setDark={setDarkMode} />
+
+                {/* Link routes start */}
                 <Routes>
                     <Route exact path='/' element={<HomePage />}/>
                 </Routes>
+                {/* Link routes end */}
+                
             </div>
         </BrowserRouter>
     )

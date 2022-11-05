@@ -21,13 +21,20 @@ const Select = ({ items, selected, setSelected }) => {
 
     return (
         <div className="select-container">
+
+            {/* Select container start */}
             <div className="select" onClick={() => setToggle(previousState => !previousState)}>{selected}{items && <span className={toggle ? "toggled" : ""}><UilAngleDown /></span>}</div>
+            {/* Select Container end */}
+
+            {/* Dropdown menu start */}
             <div className={`dropdown-content ${toggle && "dropdown-visible"}`}>
                 {items && items.map(item => {
                     delay += .1
                     return <button className='btn-select' key={item.id} onClick={() => click(item.id)} style={{ transition: toggle && `opacity .5s ${delay}s, color .5s ease-in-out, background-color .5s ease-in-out`}}>{item.name}</button>
                 })}
             </div>
+            {/* Dropdown menu end */}
+            
         </div>
     )
 }

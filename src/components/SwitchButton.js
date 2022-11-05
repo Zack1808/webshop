@@ -12,14 +12,14 @@ const spring = {
     duration: .6
 }
 
-// Creating the wariants for darkmode toggle
+// Creating the variants for darkmode toggle
 const dark = {
     backgroundColor: "rgb(60, 60, 52)",
     boxShadow: "inset -3px -4px 0 1px #f3d076",
     rotate: [0, 360]
 }
 
-// Creating the wariants for lightmode toggle
+// Creating the variants for lightmode toggle
 const light = {
     backgroundColor: "rgb(250, 244, 187)",
     rotate: [360, 0]
