@@ -2,14 +2,12 @@
 export const sortProducts = (asc, products, setProducts) => {
     if(asc) {
         const sortedList = [...products];
-        sortedList.sort((a, b) => (a.price.raw > b.price.raw) ? 1 : -1)
-        console.log(sortedList)
+        sortedList.sort((a, b) => (a.price.raw > b.price.raw) ? 1 : -1);
         setProducts(sortedList)
     }
     else {
         const sortedList = [...products];
-        sortedList.sort((a, b) => (a.price.raw < b.price.raw) ? 1 : -1)
-        console.log(sortedList)
+        sortedList.sort((a, b) => (a.price.raw < b.price.raw) ? 1 : -1);
         setProducts(sortedList)
     }
 }

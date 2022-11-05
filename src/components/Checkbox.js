@@ -5,7 +5,7 @@ import { UilCheck } from '@iconscout/react-unicons'
 import '../assets/css/CheckBox.css'
 
 // Creating the CheckBox component
-const CheckBox = ({ item, remove, add}) => {
+const CheckBox = ({ item, remove, add, amount}) => {
 
     // Defining states
     const [toggle, setToggle] = useState(false);
@@ -20,7 +20,7 @@ const CheckBox = ({ item, remove, add}) => {
     return (
         <div className="checkbox-container">
             <div className={`checkbox ${toggle && "checkbox-active"}`} onClick={handleClick}><UilCheck className={!toggle ? "not-active" : ""} /></div>
-            <label onClick={handleClick}>{item.name} <small>{item.assets && `(${item.assets.length})`}</small></label>
+            <label onClick={handleClick}>{item.name} <small>{item.assets && `(${amount})`}</small></label>
         </div>
     )
 }

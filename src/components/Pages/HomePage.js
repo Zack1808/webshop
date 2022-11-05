@@ -114,7 +114,7 @@ const HomePage = () => {
                         <CategorySelection categories={categories} setSelected={setSelectedCategory} />
                     ) : (
                         <>
-                            <Filter categories={subCategories} sorting={sorting} remove={removeSubCategory} add={addSubCategory} />
+                            <Filter categories={subCategories} sorting={sorting} remove={removeSubCategory} add={addSubCategory} products={products} />
                         </>
                     )
                 }
