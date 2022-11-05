@@ -9,7 +9,7 @@ import Radio from './Radio'
 import '../assets/css/FilterList.css';
 
 // Creating the CategoryList comoponent
-const FilterList = ({ items, title, multiselect, setSubCategories, selected }) => {
+const FilterList = ({ items, title, multiselect, remove, add }) => {
 
     // Defining state
     const [toggle, setToggle] = useState(false)
@@ -19,7 +19,7 @@ const FilterList = ({ items, title, multiselect, setSubCategories, selected }) =
             <h4 onClick={() => setToggle(previousState => !previousState)}>{title} <span className={toggle ? "toggled" : ""}><UilAngleDown /></span></h4>
             <div className={`categorylist-list-container ${toggle && "active"}`}>
                 {items && items.map(item => (
-                    <CheckBox item={item} key={item.id} click={setSubCategories} selected={selected} />
+                    <CheckBox item={item} key={item.id} remove={remove} add={add} />
                 ))}
             </div>
         </div>
