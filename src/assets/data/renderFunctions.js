@@ -12,13 +12,17 @@ export const renderCategory = (id, categories) => {
 
 // Function that will return the products depending on the selected sub category
 export const renderProducts = (products, subCategory) => {
+    let prods = [...products];
     let selected = [];
-    products.map(product => {
-        product.categories.map(category => {
+    prods.map(prod => {
+        prod.categories.map(category => {
             for(let i = 0; i < subCategory.length; i++) {
-                if(subCategory[i] === category.slug) selected.push(product)
+                if(subCategory[i] === category.slug) selected = [...selected, prod]
+                
             }
+            return category;
         })
+        return prod
     });
-    return selected
+    return selected;
 }

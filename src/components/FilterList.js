@@ -21,6 +21,7 @@ const FilterList = ({ items, title, multiselect, remove, add, products }) => {
             for(let i = 0; i < product.categories.length; i++) {
                 if(product.categories[i].slug === item.slug) amount++
             }
+            return product
         })
         return amount;
     }
@@ -31,7 +32,6 @@ const FilterList = ({ items, title, multiselect, remove, add, products }) => {
             <div className={`categorylist-list-container ${toggle && "active"}`}>
                 {items && items.map(item => {
                     const amount = checkAmount(item);
-                    console.log(amount)
                     return <CheckBox item={item} key={item.id} remove={remove} add={add} amount={amount}/>
                 })}
             </div>
@@ -42,9 +42,9 @@ const FilterList = ({ items, title, multiselect, remove, add, products }) => {
         <div className="categorylist-container">
             <h4 onClick={() => setToggle(previousState => !previousState)}>{title} <span className={toggle ? "toggled" : ""}><UilAngleDown /></span></h4>
             <div className={`categorylist-list-container ${toggle && "active"}`}>
-                {items && items.map(item => (
-                    <Radio item={item} key={item.id} />
-                ))}
+                {items && items.map(item => {
+                    return <Radio item={item} key={item.id} />
+                })}
             </div>
         </div>
     )

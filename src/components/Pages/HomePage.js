@@ -22,10 +22,11 @@ const HomePage = () => {
     // Initializing state 
     const [categories, setCategories] = useState([]);
     const [products, setProducts] = useState([]);
+    const [selectedProducts, setSelectedProducts] = useState([])
     const [selectedCategory, setSelectedCategory] = useState("");
     const [subCategories, setSubCategories] = useState([]);
     const [selectedSubCategories, setSelectedSubCategories] = useState([])
-    const [sortLowestToHighest, setSortLowestToHighest] = useState(true)
+    const [sortLowestToHighest, setSortLowestToHighest] = useState(true)    
 
     // Sorting elements
     const sorting = [
@@ -46,11 +47,8 @@ const HomePage = () => {
     // Varialbe that will hold the name of the selected category
     let categoryName = renderCategory(selectedCategory, categories)
 
-    // Variable that will contain all selected products
-    let selectedProducts = [];
-
     // Variable definition end
-
+    
 
 
     // useEffect functions start
@@ -76,8 +74,20 @@ const HomePage = () => {
 
     // Sorting the product list
     useEffect(() => {
-        sortProducts(sortLowestToHighest, products,  setProducts);
+        setProducts(sortProducts(sortLowestToHighest, products))
+
+        // disablbling the dependency-missing-warning message
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [ sortLowestToHighest]);
+
+    // Fetching only the products from the selected sub category
+    useEffect(() => {
+        let sel = renderProducts(products, selectedSubCategories)
+        setSelectedProducts(sortProducts(sortLowestToHighest, sel))
+
+        // disablbling the dependency-missing-warning message
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [selectedSubCategories, sortLowestToHighest])
 
     // useEffect functions end
    
