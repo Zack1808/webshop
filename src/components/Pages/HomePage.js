@@ -8,6 +8,7 @@ import Search from '../Search'
 import Filter from '../Filter'
 import Select from '../Select';
 import CategorySelection from './CategorySelection';
+import ProductList from './ProductList';
 
 // Importing fetching functions
 import { fetchCategories, fetchProducts, fetchSubCategories } from '../../assets/data/fetchingFunctions';
@@ -69,6 +70,8 @@ const HomePage = () => {
 
     // Fetching the products with the same category
     useEffect(() => {
+        setProducts([])
+        setSortLowestToHighest(true)
         fetchProducts(selectedCategory, setProducts);
     }, [selectedCategory]);
 
@@ -123,9 +126,14 @@ const HomePage = () => {
                     !selectedCategory ? (
                         <CategorySelection categories={categories} setSelected={setSelectedCategory} />
                     ) : (
-                        <>
+                        <div className='home-products'>
                             <Filter categories={subCategories} sorting={sorting} remove={removeSubCategory} add={addSubCategory} products={products} />
-                        </>
+                            {selectedProducts.length !== 0 ? (
+                                <ProductList products={selectedProducts} />
+                            ) : (
+                                <ProductList products={products} />
+                            )}
+                        </div>
                     )
                 }
             </div>

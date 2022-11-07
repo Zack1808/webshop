@@ -5,12 +5,20 @@
 
 .home-header {
     display: flex;
+    z-index: 1;
     justify-content: center;
     align-items: center;
     width: 100%;
+    transition: all .5s ease-in-out
 }
 
 .lists-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.home-products{
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -20,6 +28,10 @@
 @media (max-width: 760px) {
     .home-header {
         flex-direction: column-reverse;
+    }
+
+    .home-products {
+        flex-direction: column;
     }
 }
 /* HomePage styling mobile mode end */

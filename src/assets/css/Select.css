@@ -35,7 +35,7 @@
     transform-origin: top;
     transform: scale(1, 0);
     transition: transform .3s;
-    z-index: 1;
+    z-index: 2;
 }
 
 .dropdown-visible {

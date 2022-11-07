@@ -10,6 +10,7 @@ export const fetchCategories = async ( setCategories) => {
 export const fetchProducts = async (id, setProducts) => {
     const { data } = await commerce.products.list({
         category_id: id,
+        limit: 30
     })
     setProducts(data)
 }
