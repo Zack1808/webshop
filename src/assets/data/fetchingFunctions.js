@@ -1,5 +1,8 @@
 import { commerce } from "../../api/commerceInit";
 
+// importing helper functions
+import { sortProducts } from "./helperFunctions";
+
 // Function that will fetch all awailable categories
 export const fetchCategories = async ( setCategories) => {
     const { data } = await commerce.categories.list();
@@ -8,10 +11,11 @@ export const fetchCategories = async ( setCategories) => {
 
 // Function that will fetch all the products that have the selected category
 export const fetchProducts = async (id, setProducts) => {
-    const { data } = await commerce.products.list({
+    let { data } = await commerce.products.list({
         category_id: id,
         limit: 30
     })
+    data = sortProducts(true, data)
     setProducts(data)
 }
 
