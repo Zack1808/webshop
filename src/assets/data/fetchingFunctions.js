@@ -19,6 +19,12 @@ export const fetchProducts = async (id, setProducts) => {
     setProducts(data)
 }
 
+// Function that will fetch only one product according to it's id
+export const fetchProduct = async (id, setProduct) => {
+    const product = await commerce.products.retrieve(id)
+    setProduct(product)
+}
+
 // Function that will fetch the subcategories
 export const fetchSubCategories = (id, categories) => {
     if(id) {
@@ -29,4 +35,12 @@ export const fetchSubCategories = (id, categories) => {
         return categories[index].children;
     }
     return [];
+}
+
+// Function that will retreive how many products are in a category
+export const fetchCategoryProductCount = async (slug, setAmount) => {
+    const { meta } = await commerce.products.list({
+        category_slug: slug,
+    })
+    setAmount(meta.pagination.total)
 }

@@ -1,14 +1,22 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { UilCheck } from '@iconscout/react-unicons'
+
+// Importing fetching functions
+import { fetchCategoryProductCount } from '../assets/data/fetchingFunctions';
 
 // importing the style file
 import '../assets/css/CheckBox.css'
 
 // Creating the CheckBox component
-const CheckBox = ({ item, remove, add, amount}) => {
+const CheckBox = ({ item, remove, add }) => {
+
+    useEffect(() => {
+        fetchCategoryProductCount(item.slug, setAmount)
+    }, [])
 
     // Defining states
     const [toggle, setToggle] = useState(false);
+    const [amount, setAmount] = useState(0);
 
     // Function that will handle the click event 
     const handleClick = () => {

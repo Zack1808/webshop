@@ -21,7 +21,7 @@ const Card = ({ product }) => {
                 <h4 className="card-title">{product.name}</h4>
                 <h4>{product.price.formatted_with_code}</h4>
                 <div className="card-buttons">
-                    <Link to="/" className='btn'>View details</Link>
+                    <Link to={`/details/${product.id}`} className='btn'>View details</Link>
                     <button className="btn btn-add">Add to cart <UilShoppingCart /></button>
                 </div>
             </div>

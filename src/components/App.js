@@ -6,6 +6,7 @@ import '../assets/css/App.css';
 
 // Importing the costume components
 import HomePage from './Pages/HomePage'
+import DetailsPage from './Pages/DetailsPage';
 import Navbar from './Navbar';
 
 
@@ -24,6 +25,7 @@ const App = () => {
                 {/* Link routes start */}
                 <Routes>
                     <Route exact path='/' element={<HomePage />}/>
+                    <Route path="/details/:id" element={<DetailsPage />} />
                 </Routes>
                 {/* Link routes end */}
                 

@@ -11,3 +11,9 @@ export const sortProducts = (asc, products) => {
         return sortedList;
     }
 }
+
+// Function that will retreive the id of the product from the URL
+export const getId = () => {
+    const url = window.location.pathname
+    return url.substring(url.lastIndexOf('/') + 1);
+}

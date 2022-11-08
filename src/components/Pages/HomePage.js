@@ -4,11 +4,11 @@ import React, { useState, useEffect } from 'react';
 import '../../assets/css/HomePage.css'
 
 // Importing the costume made components
+import CategorySelection from './CategorySelection';
+import ProductList from './ProductList';
 import Search from '../Search'
 import Filter from '../Filter'
 import Select from '../Select';
-import CategorySelection from './CategorySelection';
-import ProductList from './ProductList';
 
 // Importing fetching functions
 import { fetchCategories, fetchProducts, fetchSubCategories } from '../../assets/data/fetchingFunctions';

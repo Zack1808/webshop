@@ -1,0 +1,37 @@
+import React, { useState, useEffect } from 'react';
+
+// Importing the style file
+import '../../assets/css/DetailsPage.css'
+
+// Importing the fetching functions
+import { fetchProduct } from '../../assets/data/fetchingFunctions'
+
+// Importing the helper functions
+import { getId } from '../../assets/data/helperFunctions'
+
+// Creating the DetailsPage component
+const DetailsPage = () => {
+
+    // Variable definition start
+    // Setting up state
+    const [product, setProduct] = useState({});
+    // Variable definition end
+
+    // Functions start
+    // Fetching the product once the page is rendered
+    useEffect(() => {
+        // Retreiving the id from the url
+        const id = getId()
+        fetchProduct(id, setProduct);
+    }, [])
+    // Funcitons end
+
+    return (
+        <div className="details-page-container">
+            {console.log(product)}
+        </div>
+    )
+}
+
+// Exporting the DetailsPage component
+export default DetailsPage;
