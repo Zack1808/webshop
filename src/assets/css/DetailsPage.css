@@ -1,7 +1,30 @@
+/* DetailsPage styling start */
+/* DetailsPage styling light mode start */
 .details-page-container {
     padding: 80px 0 0;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+}
+
+.details-carosel {
+    width: 30%;
+    padding: 10px
+}
+
+.details-product-information {
+    width: 70%;
+}
+
+
+/* DisplayPage styling mobile mode start */
+@media (max-width: 760px) {
+    .details-page-container {
+        flex-direction: column;
+    }
+
+    .details-carosel {
+        width: 100%
+    };
 }

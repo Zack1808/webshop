@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
+// Importing the costume made components
+import Carosel from '../Carosel';
+
 // Importing the style file
 import '../../assets/css/DetailsPage.css'
 
@@ -14,7 +17,7 @@ const DetailsPage = () => {
 
     // Variable definition start
     // Setting up state
-    const [product, setProduct] = useState({});
+    const [product, setProduct] = useState();
     // Variable definition end
 
     // Functions start
@@ -28,7 +31,10 @@ const DetailsPage = () => {
 
     return (
         <div className="details-page-container">
-            {console.log(product)}
+            <div className="details-carosel">
+                {product && <Carosel images={product.assets} />}
+            </div>
+            <div className="details-product-information"></div>
         </div>
     )
 }
