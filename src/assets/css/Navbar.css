@@ -1,5 +1,7 @@
 /* Navbar styling start */
 /* Navbar styling  light mode start */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@900&display=swap');
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -36,13 +38,10 @@
 }
 
 .logo-text h1{
-    font-size: 30px;
-    letter-spacing: .05em;
-}
-
-.logo-text h6 {
-    font-size: 10px;
+    font-family: 'Raleway', sans-serif;
     font-weight: 900;
+    font-size: 40px;
+    letter-spacing: .05em;
 }
 /* Navbar logo styling end */
 
@@ -73,10 +72,6 @@
     .logo-text h1 {
         font-size: 20px;
         padding-right: 10px;
-    }
-
-    .logo-text h6 {
-        display: none
     }
     /* Navbar logo styling end */
 }

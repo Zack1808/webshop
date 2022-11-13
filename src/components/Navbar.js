@@ -20,7 +20,6 @@ const Navbar = ({ dark, setDark}) => {
                 <VideogameAssetIcon sx={{ fontSize: "80px" }}/>
                 <div className="logo-text">
                     <h1>GamerTech</h1>
-                    <h6>Where all the gaming tech is in one place</h6>
                 </div>
             </Link>
             {/* Logo end */}
