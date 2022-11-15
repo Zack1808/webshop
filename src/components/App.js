@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 // Importing the style file
@@ -14,7 +14,16 @@ import Navbar from './Navbar';
 const App = () => {
 
     // setting up the state variables
-    const [darkMode, setDarkMode] = useState(false)
+    const [darkMode, setDarkMode] = useState(false);
+
+    useEffect(() => {
+        const dark = JSON.parse(localStorage.getItem('react-webshop-dark-mode'));
+        setDarkMode(dark)
+    }, [])
+
+    useEffect(() => {
+        localStorage.setItem('react-webshop-dark-mode', JSON.stringify(darkMode));
+    }, [darkMode])
 
     return (
         // Setting up react-router-dom

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 // Importing the costume made components
 import Carosel from '../Carosel';
+import Loader from '../Loader'
 
 // Importing the style file
 import '../../assets/css/DetailsPage.css'
@@ -28,6 +29,8 @@ const DetailsPage = () => {
         fetchProduct(id, setProduct);
     }, [])
     // Funcitons end
+
+    if(!product) return <Loader />
 
     return (
         <div className="details-page-container">

@@ -9,6 +9,7 @@ import ProductList from './ProductList';
 import Search from '../Search'
 import Filter from '../Filter'
 import Select from '../Select';
+import Loader from '../Loader'
 
 // Importing fetching functions
 import { fetchCategories, fetchProducts, fetchSubCategories } from '../../assets/data/fetchingFunctions';
@@ -63,16 +64,12 @@ const HomePage = () => {
     useEffect(() => {
         setSubCategories(fetchSubCategories(selectedCategory, categories))
         setSelectedSubCategories([])
-
-        // disablbling the dependency-missing-warning message
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [selectedCategory]);
-
-    // Fetching the products with the same category
-    useEffect(() => {
         setProducts([])
         setSortLowestToHighest(true)
         fetchProducts(selectedCategory, setProducts);
+
+        // disablbling the dependency-missing-warning message
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedCategory]);
 
     // Sorting the product list
@@ -124,16 +121,16 @@ const HomePage = () => {
             <div className="lists-container">
                 {
                     !selectedCategory ? (
-                        <CategorySelection categories={categories} setSelected={setSelectedCategory} />
+                        categories.length !== 0 ? <CategorySelection categories={categories} setSelected={setSelectedCategory} /> : <Loader />
                     ) : (
-                        <div className='home-products'>
+                        products.length !== 0 ? <div className='home-products'>
                             <Filter categories={subCategories} sorting={sorting} remove={removeSubCategory} add={addSubCategory} products={products} />
                             {selectedProducts.length !== 0 ? (
                                 <ProductList products={selectedProducts} />
                             ) : (
                                 <ProductList products={products} />
                             )}
-                        </div>
+                        </div> : <Loader />
                     )
                 }
             </div>

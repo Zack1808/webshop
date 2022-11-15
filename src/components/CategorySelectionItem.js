@@ -12,8 +12,13 @@ const CategorySelectionItem = ({ category, setSelected }) => {
         threshold: 0.1
     });
 
+    // Function that will handle the onClick event
+    const onClick = () => {
+        setSelected(category.id)
+    }
+
     return (
-        <div ref={ref} className={`category-selection ${inView && "category-visible"}`} key={category.id} onClick={() => setSelected(category.id)}>
+        <div ref={ref} className={`category-selection ${inView && "category-visible"}`} key={category.id} onClick={onClick}>
             <div className="category-image" style={{ backgroundImage: `url(${category.assets[0].url})`}}></div>
             <div className="category-text"><h3>{category.name}</h3></div>
         </div>
