@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
 // Importing costume made components
 import CategorySelectionItem from '../CategorySelectionItem';
@@ -14,7 +15,9 @@ const CategorySelection = ({ categories, setSelected}) => {
         <div className="category-selection-container">
                 {categories.map(category => {
                     return (
-                        <CategorySelectionItem category={category} setSelected={setSelected} key={category.id} />
+                       <Link to={`/products/${category.name}`}>
+                            <CategorySelectionItem category={category} setSelected={setSelected} key={category.id} />
+                       </Link>
                     )
                 })}
         </div>

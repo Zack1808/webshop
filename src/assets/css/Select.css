@@ -47,6 +47,9 @@
     background-color: transparent;
     padding: 15px 0;
     border: none;
+    text-decoration: none;
+    text-align: center;
+    color: #000;
     background-color: var(--light);
     border-bottom: 1px solid var(--dark-placeholder);
     font-weight: 600;

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { UilAngleDown } from '@iconscout/react-unicons'
+import { Link } from 'react-router-dom'
 
 // Importing the style file
 import '../assets/css/Select.css';
@@ -29,8 +30,8 @@ const Select = ({ items, selected, setSelected }) => {
             {/* Dropdown menu start */}
             <div className={`dropdown-content ${toggle && "dropdown-visible"}`}>
                 {items && items.map(item => {
-                    delay += .1
-                    return <button className='btn-select' key={item.id} onClick={() => click(item.id)} style={{ transition: toggle && `opacity .5s ${delay}s, color .5s ease-in-out, background-color .5s ease-in-out`}}>{item.name}</button>
+                    delay += .07
+                    return <Link to={`/products/${item.name}`} className='btn-select' key={item.id} onClick={() => click(item.id)} style={{ transition: toggle && `opacity .5s ${delay}s, color .5s ease-in-out, background-color .5s ease-in-out`}}>{item.name}</Link>
                 })}
             </div>
             {/* Dropdown menu end */}

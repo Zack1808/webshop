@@ -1,139 +1,47 @@
-import React, { useState, useEffect } from 'react';
+import React, {useEffect} from 'react';
 
 // Importing the style file
 import '../../assets/css/HomePage.css'
 
 // Importing the costume made components
 import CategorySelection from './CategorySelection';
-import ProductList from './ProductList';
 import Search from '../Search'
-import Filter from '../Filter'
 import Select from '../Select';
-import Loader from '../Loader'
+import Loader from '../Loader';
 
-// Importing fetching functions
-import { fetchCategories, fetchProducts, fetchSubCategories } from '../../assets/data/fetchingFunctions';
-import { renderCategory, renderProducts } from '../../assets/data/renderFunctions';
-import { sortProducts } from '../../assets/data/helperFunctions';
+// Importing helper functions
+import { renderCategory } from '../../assets/data/renderFunctions';
 
 // Creating the HomePage component 
-const HomePage = () => {
+const HomePage = ({ properties }) => {
 
-    // Variable definition start
-
-    // Initializing state 
-    const [categories, setCategories] = useState([]);
-    const [products, setProducts] = useState([]);
-    const [selectedProducts, setSelectedProducts] = useState([])
-    const [selectedCategory, setSelectedCategory] = useState("");
-    const [subCategories, setSubCategories] = useState([]);
-    const [selectedSubCategories, setSelectedSubCategories] = useState([])
-    const [sortLowestToHighest, setSortLowestToHighest] = useState(true)    
-
-    // Sorting elements
-    const sorting = [
-        {
-            id: 1,
-            name: "Sort lowest to highest price",
-            active: sortLowestToHighest,
-            setActive: function(){setSortLowestToHighest(true)},
-        },
-        {
-            id: 2,
-            name: "Sort highest to lowest price",
-            active: !sortLowestToHighest,
-            setActive: function(){setSortLowestToHighest(false)}
-        }
-    ];
-
-    // Varialbe that will hold the name of the selected category
-    let categoryName = renderCategory(selectedCategory, categories)
-
-    // Variable definition end
-    
-
+    // Variable and state definition start
+    var categoryName = renderCategory(properties.selectedCategory, properties.categories)
+    // Variable and state definition end
 
     // useEffect functions start
-
-    // Fetching the products from the commercejs database as the page is loaded
     useEffect(() => {
-        fetchCategories(setCategories);
-    }, []);
-
-    // Fetching the subcategories once every time a new category is selected
-    useEffect(() => {
-        setSubCategories(fetchSubCategories(selectedCategory, categories))
-        setSelectedSubCategories([])
-        setProducts([])
-        setSortLowestToHighest(true)
-        fetchProducts(selectedCategory, setProducts);
-
-        // disablbling the dependency-missing-warning message
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [selectedCategory]);
-
-    // Sorting the product list
-    useEffect(() => {
-        setProducts(sortProducts(sortLowestToHighest, products))
-
-        // disablbling the dependency-missing-warning message
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [ sortLowestToHighest]);
-
-    // Fetching only the products from the selected sub category
-    useEffect(() => {
-        let sel = renderProducts(products, selectedSubCategories)
-        setSelectedProducts(sortProducts(sortLowestToHighest, sel))
-
-        // disablbling the dependency-missing-warning message
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [selectedSubCategories, sortLowestToHighest])
-
-    // useEffect functions end
-   
-
-
-    // State switching functions start
-
-    const removeSubCategory = (slug) => {
-        let removed = [...selectedSubCategories];
-        let index = removed.indexOf(slug);
-        removed.splice(index, 1);
-        setSelectedSubCategories(removed)
-    }
-
-    const addSubCategory = (slug) => {
-        let added = [...selectedSubCategories];
-        added.push(slug)
-        setSelectedSubCategories(added)
-    }
-
-    // State switching functions end
-
-
+        properties.setSelectedCategory("")
+    }, [])
+    
 
     return (
         <div className="home-container">
+
+            {/* Header start */}
             <header className="home-header">
-                <Select items={categories} selected={categoryName} setSelected={setSelectedCategory} />
+                <Select items={properties.categories} selected={categoryName} setSelected={properties.setSelectedCategory} />
                 <Search />
             </header>
+            {/* Header end */}
+
+            {/* Category listing start */}
             <div className="lists-container">
                 {
-                    !selectedCategory ? (
-                        categories.length !== 0 ? <CategorySelection categories={categories} setSelected={setSelectedCategory} /> : <Loader />
-                    ) : (
-                        products.length !== 0 ? <div className='home-products'>
-                            <Filter categories={subCategories} sorting={sorting} remove={removeSubCategory} add={addSubCategory} products={products} />
-                            {selectedProducts.length !== 0 ? (
-                                <ProductList products={selectedProducts} />
-                            ) : (
-                                <ProductList products={products} />
-                            )}
-                        </div> : <Loader />
-                    )
+                    properties.categories.length !== 0 ? <CategorySelection categories={properties.categories} setSelected={properties.setSelectedCategory} /> : <Loader />
                 }
             </div>
+            {/* Category listing end */}
         </div>
     )
 }

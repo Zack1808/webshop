@@ -7,6 +7,11 @@
     justify-content: center;
     margin-top: 30px;
 }
+
+.category-selection-container a {
+    text-decoration: none;
+    color: #000;
+}
 /* CategorySelection styling light mode end */
 
 /* CategorySelection styling mobile mode start */
