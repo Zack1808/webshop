@@ -94,12 +94,4 @@
     border-color: var(--light);
 }
 /* Carosel styling dark mode end */
-
-/* Carosel styling mobile mode start */
-@media (max-width: 760px) {
-    .left-slider, .right-slider {
-        opacity: 1;
-    }
-}
-/* Carosel styling mobile mode end */
 /* Carosel styling end */

@@ -31,21 +31,50 @@ const DetailsPage = () => {
     }, [])
     // Funcitons end
 
+    console.log(product)
+
     if(!product) return <Loader />
+
 
     return (
         <div className="details-page-container">
             <div className="details-carosel">
                 {product && <Carosel images={product.assets} />}
             </div>
-            <div className="shopping-info">
-                <h3>Cijena: {product.price.formatted_with_code}</h3>
-                <button className='btn btn-add'>Add to kart <UilShoppingCart /></button>
-            </div>
-            {/* <div className="details-product-information">
+            <div className="details-product-information">
                 <h1>{product.name}</h1>
-                <div className="details-page-desc" dangerouslySetInnerHTML={{__html: product.description}}></div>
-            </div> */}
+                <div className="shopping-info">
+                    <h2>Price: {product.price.formatted_with_symbol}</h2>
+                    <p>
+                        {product.price.raw > 100 ? (
+                            product.price.raw > 500 ? (
+                                product.price.raw > 1000 ? `Installment: €${(product.price.raw / 36).toFixed(2)}` : `Installment: €${(product.price.raw / 24).toFixed(2)}`
+                            ) : `Installment: €${(product.price.raw / 12).toFixed(2)}`
+                        ) : null}
+                    </p>
+                    <hr />
+                    <div className="column">
+                        <h4>Installments: </h4>
+                        <p>
+                            {product.price.raw > 100 ? (
+                                product.price.raw > 500 ? (
+                                    product.price.raw > 1000 ? "36 installments without interest" : "24 installments without interest"
+                                ) : "12 installments without interest"
+                            ) : "No"}
+                        </p>
+                    </div>
+                    <hr />
+                    <div className="column">
+                        <h4>Available: </h4>
+                        <p>
+                            {product.inventory.available > 0 ? "In Stock" : "Currently unavailable"}
+                        </p>
+                    </div>
+                    <hr />
+                    <button className="btn btn-add">Add to cart <UilShoppingCart /></button>
+                </div>
+                {/* <div className="details-page-desc" dangerouslySetInnerHTML={{__html: product.description}}></div> */}
+            </div>
         </div>
     )
 }

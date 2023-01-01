@@ -3,25 +3,28 @@
 .details-page-container {
     padding: 80px 0 0;
     display: flex;
+    width: 60%;
+    margin: 0 auto;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     min-height: 100vh;
 }
 
 .details-carosel {
-    align-self: flex-start;
-    width: 30%;
+    width: 50%;
     padding: 10px;
     margin-top: 30px
 }
 
 .details-product-information {
-    width: 70%;
+    width: 60%;
+    padding: 0 30px;
+    gap: 150px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding-top: 30px;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding-top: 40px;
     transition: all .5s ease-in-out
 }
 
@@ -41,22 +44,40 @@
 
 .shopping-info {
     display: flex;
-    width: 70%;
-    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+    align-items: stretch;
+    justify-content: flex-start;
+}
+
+.column {
+    display: flex;
+    padding: 10px 0;
     justify-content: space-between;
 }
 
-/* DisplayPage styling light mode end */
+/* DetailsPage styling light mode end */
 
+/* DetailsPage styling dark mode start */
 .dark .details-product-information {
     color: var(--light)
 }
+/* DetailsPage styling dark mode end */
 
+/* DetailsPage styling tablet mode start */
+@media (max-width: 1400px) {
+    .details-page-container {
+        width: 90%;
+    }
+}
+/* DetailsPage styling tablet mode end */
 
-/* DisplayPage styling mobile mode start */
-@media (max-width: 760px) {
+/* DetailsPage styling mobile mode start */
+@media (max-width: 820px) {
     .details-page-container {
         flex-direction: column;
+        width: 100%;
     }
 
     .details-carosel {
