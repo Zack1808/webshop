@@ -46,6 +46,17 @@ const Carosel = ({ images }) => {
                     ) : null
                 }
             </div>
+            <div className="carosel-pointers">
+                {
+                    images.length !== 1 ? (
+                        <>
+                        {images.map(image => (
+                            <button className={`pointer ${images.indexOf(image) === selectedIndex && "active"}`} onClick={() => setSelectedIndex(images.indexOf(image))}></button>
+                        ))}
+                        </>
+                    ) : null
+                }
+            </div>
         </div>
     )
 }

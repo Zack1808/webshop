@@ -3,6 +3,10 @@
 .carosel-container{
     width: 100%;
     aspect-ratio: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
 }
 
 .carosel-image{
@@ -41,6 +45,26 @@
 .carosel-image:hover .left-slider, .carosel-image:hover .right-slider {
     opacity: 1;
 }
+
+.carosel-pointers {
+    display: flex;
+    width: 20%;
+    justify-content: space-between ;
+    align-items: center;
+}
+
+.pointer {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    border: 2px solid lightgray;
+    transition: all .5s ease-in-out;
+}
+
+.pointer.active {
+    background-color: var(--dark);
+    border: 1px solid var(--dark);
+}
 /* Carosel styling light mode end */
 
 /* Carosel styling dark mode start */
@@ -58,6 +82,16 @@
 
 .dark .right-slider {
     background: linear-gradient(to left, rgba(255, 255, 255, .6), transparent 100%)
+}
+
+.dark .pointer {
+    background-color: rgb(112, 112, 112);
+    border: 2px solid rgb(65, 65, 65);
+}
+
+.dark .pointer.active {
+    background-color: var(--light);
+    border-color: var(--light);
 }
 /* Carosel styling dark mode end */
 

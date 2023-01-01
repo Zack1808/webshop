@@ -38,14 +38,14 @@ const DetailsPage = () => {
             <div className="details-carosel">
                 {product && <Carosel images={product.assets} />}
             </div>
-            <div className="details-product-information">
+            <div className="shopping-info">
+                <h3>Cijena: {product.price.formatted_with_code}</h3>
+                <button className='btn btn-add'>Add to kart <UilShoppingCart /></button>
+            </div>
+            {/* <div className="details-product-information">
                 <h1>{product.name}</h1>
                 <div className="details-page-desc" dangerouslySetInnerHTML={{__html: product.description}}></div>
-                <div className="shopping-info">
-                    <h3>Cijena: {product.price.formatted_with_code}</h3>
-                    <button className='btn btn-add'>Add to kart <UilShoppingCart /></button>
-                </div>
-            </div>
+            </div> */}
         </div>
     )
 }
