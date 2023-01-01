@@ -105,6 +105,7 @@
     .details-product-information {
         width: 100%;
         padding-inline: 20px;
+        gap: 50px
     }
 
     .details-product-information h1 {

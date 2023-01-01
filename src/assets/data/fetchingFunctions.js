@@ -44,3 +44,8 @@ export const fetchCategoryProductCount = async (slug, setAmount) => {
     })
     setAmount(meta.pagination.total)
 }
+
+// Function that will retreive the cart 
+export const fetchCart = async(setCart) => {
+    setCart(await commerce.cart.retrieve())
+}

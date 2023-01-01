@@ -15,7 +15,7 @@ import { fetchProduct } from '../../assets/data/fetchingFunctions'
 import { getId } from '../../assets/data/helperFunctions'
 
 // Creating the DetailsPage component
-const DetailsPage = () => {
+const DetailsPage = ({ add }) => {
 
     // Variable definition start
     // Setting up state
@@ -30,8 +30,6 @@ const DetailsPage = () => {
         fetchProduct(id, setProduct);
     }, [])
     // Funcitons end
-
-    console.log(product)
 
     if(!product) return <Loader />
 
@@ -71,7 +69,7 @@ const DetailsPage = () => {
                         </p>
                     </div>
                     <hr />
-                    {product.inventory.available > 0 ? <button className="btn btn-add">Add to cart <UilShoppingCart /></button> : null}
+                    {product.inventory.available > 0 ? <button className="btn btn-add" onClick={() => add(product.id, 1)}>Add to cart <UilShoppingCart /></button> : null}
                 </div>
             </div>
             <hr />

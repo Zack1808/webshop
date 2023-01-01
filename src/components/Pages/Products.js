@@ -16,7 +16,7 @@ import { fetchProducts, fetchSubCategories } from '../../assets/data/fetchingFun
 import { sortProducts } from '../../assets/data/helperFunctions';
 
 // Creating the Products component
-const Products = ({ properties}) =>{
+const Products = ({ properties, add }) =>{
 
     // Variable and state definition start
     var categoryName = renderCategory(properties.selectedCategory, properties.categories)
@@ -112,9 +112,9 @@ const Products = ({ properties}) =>{
                     <div className='home-products'>
                         <Filter categories={subCategories} add={addSubCategory} remove={removeSubCategory} sorting={sorting} />
                         {selectedProducts.length !== 0 ? (
-                            <ProductList products={selectedProducts} />
+                            <ProductList products={selectedProducts} add={add} />
                         ) : (
-                            <ProductList products={products} />
+                            <ProductList products={products} add={add} />
                         )}
                     </div>
                 ) : (<Loader />)

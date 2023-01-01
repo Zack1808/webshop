@@ -7,7 +7,7 @@ import { UilShoppingCart } from '@iconscout/react-unicons'
 import '../assets/css/Card.css'
 
 // Creating the card component 
-const Card = ({ product }) => {
+const Card = ({ product, add }) => {
 
     // Setting up the inView hook
     const [ref, inView] = useInView({
@@ -22,7 +22,7 @@ const Card = ({ product }) => {
                 <h4>Price: {product.price.formatted_with_symbol}</h4>
                 <div className="card-buttons">
                     <Link to={`/details/${product.id}`} className='btn'>View details</Link>
-                    <button className="btn btn-add">Add to cart <UilShoppingCart /></button>
+                    <button className="btn btn-add" onClick={() => add(product.id, 1)}>Add to cart <UilShoppingCart /></button>
                 </div>
             </div>
         </div>

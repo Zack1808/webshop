@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { commerce } from '../api/commerceInit';
 
 // Importing the style file
 import '../assets/css/App.css';
@@ -11,9 +12,7 @@ import DetailsPage from './Pages/DetailsPage';
 import Navbar from './Navbar';
 
 // Importing fetching & helper functions
-import { fetchCategories, fetchProducts, fetchSubCategories } from '../assets/data/fetchingFunctions';
-import { renderCategory, renderProducts } from '../assets/data/renderFunctions';
-import { sortProducts } from '../assets/data/helperFunctions';
+import { fetchCategories, fetchCart} from '../assets/data/fetchingFunctions';
 
 
 // Creating the App component
@@ -23,6 +22,7 @@ const App = () => {
     const [darkMode, setDarkMode] = useState(false)
     const [categories, setCategories] = useState([])
     const [selectedCategory, setSelectedCategory] = useState("")
+    const [cart, setCart] = useState({})
 
     const homePageProps = {
         categories,
@@ -33,7 +33,7 @@ const App = () => {
     const productsPageProps = {
         categories,
         selectedCategory,
-        setSelectedCategory
+        setSelectedCategory,
     }
     // Variable and state definition end
 
@@ -46,6 +46,8 @@ const App = () => {
         // fetching the categories from the database
         if(localStorage.getItem("react-webshop-categories")) setCategories(JSON.parse(localStorage.getItem("react-webshop-categories")))
         else fetchCategories(setCategories)
+        fetchCart(setCart)
+
     }, [])
 
     // useEffect used for storing the darkmode state value
@@ -58,17 +60,23 @@ const App = () => {
         localStorage.setItem("react-webshop-categories", JSON.stringify(categories))
     }, [categories])
 
+    // Function that will add items to the cart
+    const addToCart = async(id, amount) => {
+        const item = await commerce.cart.add(id, amount)
+        setCart(item)
+    }
+
     return (
         // Setting up react-router-dom
         <BrowserRouter basename={process.env.PUBLIC_URL}>
             <div className={`container ${darkMode && 'dark'}`}>
-                <Navbar dark={darkMode} setDark={setDarkMode} />
+                <Navbar dark={darkMode} setDark={setDarkMode} total={cart.total_items} />
 
                 {/* Link routes start */}
                 <Routes>
                     <Route exact path='/' element={<HomePage properties={homePageProps} />}/>
-                    <Route path='/products/:category' element={<Products properties={productsPageProps} />} />
-                    <Route path="/details/:id" element={<DetailsPage />} />
+                    <Route path='/products/:category' element={<Products properties={productsPageProps} add={addToCart} />} />
+                    <Route path="/details/:id" element={<DetailsPage add={addToCart} />} />
                 </Routes>
                 {/* Link routes end */}
                 

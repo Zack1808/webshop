@@ -11,7 +11,7 @@ import SwitchButton from './SwitchButton'
 import '../assets/css/Navbar.css'
 
 // Creating the Navbar component
-const Navbar = ({ dark, setDark}) => {
+const Navbar = ({ dark, setDark, total}) => {
     return (
         <nav className='navbar'>
 
@@ -27,7 +27,7 @@ const Navbar = ({ dark, setDark}) => {
             {/* Button display start */}
             <div className="navbar-buttons">
                 <SwitchButton toggle={dark} setToggle={setDark} />
-                <Badge amount={2}>
+                <Badge amount={total}>
                     <Link to="/cart"><UilShoppingCart/></Link>
                 </Badge>
             </div>
