@@ -71,10 +71,11 @@ const DetailsPage = () => {
                         </p>
                     </div>
                     <hr />
-                    <button className="btn btn-add">Add to cart <UilShoppingCart /></button>
+                    {product.inventory.available > 0 ? <button className="btn btn-add">Add to cart <UilShoppingCart /></button> : null}
                 </div>
-                {/* <div className="details-page-desc" dangerouslySetInnerHTML={{__html: product.description}}></div> */}
             </div>
+            <hr />
+            <div className="details-page-desc" dangerouslySetInnerHTML={{__html: product.description}}></div>
         </div>
     )
 }
