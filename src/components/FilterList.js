@@ -9,7 +9,7 @@ import Radio from './Radio'
 import '../assets/css/FilterList.css';
 
 // Creating the CategoryList comoponent
-const FilterList = ({ items, title, multiselect, remove, add, products }) => {
+const FilterList = ({ items, title, multiselect, remove, add }) => {
 
     // Defining state
     const [toggle, setToggle] = useState(false);

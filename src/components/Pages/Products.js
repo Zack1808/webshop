@@ -11,8 +11,8 @@ import Select from '../Select';
 import Search from '../Search';
 
 // Importing helper functions
-import { renderCategory } from '../../assets/data/renderFunctions';
-import { fetchSubCategories } from '../../assets/data/fetchingFunctions';
+import { renderCategory, renderProducts } from '../../assets/data/renderFunctions';
+import { fetchProducts, fetchSubCategories } from '../../assets/data/fetchingFunctions';
 
 // Creating the Products component
 const Products = ({ properties}) =>{
@@ -21,6 +21,9 @@ const Products = ({ properties}) =>{
     var categoryName = renderCategory(properties.selectedCategory, properties.categories)
     const [subCategories, setSubCategories] = useState([])
     const [selectedSubCategories, setSelectedSubCategories] = useState([])
+    const [products, setProducts] = useState([])
+
+    var selectedProducts = []
     // Variable and state definition end
 
     // useEffect functionst start
@@ -28,15 +31,22 @@ const Products = ({ properties}) =>{
         if(properties.selectedCategory !== "") {
             localStorage.setItem("react-webshop-selected-category", JSON.stringify(properties.selectedCategory))
             setSubCategories(fetchSubCategories(properties.selectedCategory, properties.categories))
+            fetchProducts(properties.selectedCategory, setProducts)
         }
         properties.setSelectedCategory(JSON.parse(localStorage.getItem("react-webshop-selected-category")))
-
     }, [])
 
+    // Getting the selected category from the local storage and fetching the subcategories for it
     useEffect(() => {
         localStorage.setItem("react-webshop-selected-category", JSON.stringify(properties.selectedCategory))
         setSubCategories(fetchSubCategories(properties.selectedCategory, properties.categories))
+        setProducts([])
+        fetchProducts(properties.selectedCategory, setProducts)
     }, [properties.selectedCategory])
+
+    useEffect(() => {
+        selectedProducts = renderProducts(products, selectedSubCategories)
+    })
     // useEffect functions end
 
     // Functions start
@@ -61,14 +71,18 @@ const Products = ({ properties}) =>{
                 <Select items={properties.categories} selected={categoryName} setSelected={properties.setSelectedCategory} />
                 <Search />
             </header>
-            <div className='home-products'>
-                <Filter categories={subCategories} add={addSubCategory} remove={removeSubCategory} />
-                {/* {selectedProducts.length !== 0 ? (
-                    <ProductList products={selectedProducts} />
-                ) : (
-                    <ProductList products={products} />
-                )} */}
-            </div>
+            {
+                products.length !== 0  ? (
+                    <div className='home-products'>
+                        <Filter categories={subCategories} add={addSubCategory} remove={removeSubCategory} />
+                        {selectedProducts.length !== 0 ? (
+                            <ProductList products={selectedProducts} />
+                        ) : (
+                            <ProductList products={products} />
+                        )}
+                    </div>
+                ) : (<Loader />)
+            }
         </div>
     ) 
 }
