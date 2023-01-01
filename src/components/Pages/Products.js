@@ -36,7 +36,6 @@ const Products = ({ properties}) =>{
                 <Select items={properties.categories} selected={categoryName} setSelected={properties.setSelectedCategory} />
                 <Search />
             </header>
-            {}
             {/* <div className='home-products'>
                 <Filter categories={subCategories} sorting={sorting} remove={removeSubCategory} add={addSubCategory} products={products} />
                 {selectedProducts.length !== 0 ? (
