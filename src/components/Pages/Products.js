@@ -60,7 +60,10 @@ const Products = ({ properties}) =>{
         localStorage.setItem("react-webshop-selected-category", JSON.stringify(properties.selectedCategory))
         setSubCategories(fetchSubCategories(properties.selectedCategory, properties.categories))
         setProducts([])
+        setSelectedProducts([])
+        setSelectedSubCategories([])
         fetchProducts(properties.selectedCategory, setProducts)
+        setLowToHigh(true)
 
         // Removing the warning message that requests dependencies
         // eslint-disable-next-line
