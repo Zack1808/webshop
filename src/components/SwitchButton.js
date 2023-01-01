@@ -9,7 +9,7 @@ const spring = {
     type: "spring",
     stiffness: 600,
     damping: 170,
-    duration: .6,
+    duration: .8,
 }
 
 // Creating the wariants for darkmode toggle
@@ -17,7 +17,7 @@ const dark = {
     backgroundColor: "rgb(60, 60, 52)",
     boxShadow: "inset -3px -4px 0 1px #f3d076",
     rotate: [0, 360],
-    x: 20,
+    x: 22,
     y: 0,
 }
 
