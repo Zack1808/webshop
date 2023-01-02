@@ -79,6 +79,12 @@ const App = () => {
         setCart(removed)
     }
 
+    // Function that will empty the entire cart
+    const emptyCart = async() => {
+        const empty = await commerce.cart.empty()
+        setCart(empty)
+    }
+
     return (
         // Setting up react-router-dom
         <BrowserRouter basename={process.env.PUBLIC_URL}>
@@ -90,7 +96,7 @@ const App = () => {
                     <Route exact path='/' element={<HomePage properties={homePageProps} />}/>
                     <Route path='/products/:category' element={<Products properties={productsPageProps} add={addToCart} />} />
                     <Route path="/details/:id" element={<DetailsPage add={addToCart} />} />
-                    <Route path='/cart' element={<Cart cart={cart} clicks={{changeItemAmount, removeFromCart}} />} />
+                    <Route path='/cart' element={<Cart cart={cart} clicks={{changeItemAmount, removeFromCart, emptyCart}} />} />
                 </Routes>
                 {/* Link routes end */}
                 

@@ -26,9 +26,53 @@ const Cart = ({cart, clicks}) => {
 
     return (
         <div className="cart-container">
-            {cart.line_items.map(item => (
-                <Card key={item.id} product={item} click={clicks} />
-            ))}
+            <div className="cart-list">
+                {cart.line_items.map(item => (
+                    <Card key={item.id} product={item} click={clicks} />
+                ))}
+            </div>
+            <div className="cart-summary">
+                <h1>Cart summary</h1>
+                <div className="cart-information">
+                    <div className="column">
+                        <h4>Total Price: </h4>
+                        <p>{cart.subtotal.formatted_with_symbol}</p>
+                    </div>
+                    <hr />
+                    <div className="column">
+                        <h4>Installments: </h4>
+                        <p>
+                            {cart.subtotal.raw > 100 ? (
+                                cart.subtotal.raw > 500 ? (
+                                    cart.subtotal.raw > 1000 ? "36 installments without interest" : "24 installments without interest"
+                                ) : "12 installments without interest"
+                            ) : "No"}
+                        </p>
+                    </div>
+                    {
+                        cart.subtotal.raw > 100 ? (
+                            <>
+                                <hr />
+                                <div className="column">
+                                    <h4>Installment: </h4>
+                                    <p>
+                                        €{cart.subtotal.raw > 100 ? (
+                                            cart.subtotal.raw > 500 ? (
+                                                cart.subtotal.raw > 1000 ? (cart.subtotal.raw / 36).toFixed(2) : (cart.subtotal.raw / 24).toFixed(2)
+                                            ) : (cart.subtotal.raw / 12).toFixed(2)
+                                        ) : null}
+                                    </p>
+                                </div>
+                            </>
+                        ) : null
+                    }
+                    <hr />
+                    <div className="column">
+                        <button className="btn btn-add" onClick={clicks.emptyCart}>Empty cart</button>
+                        <button className="btn btn-add">Checkout</button>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
