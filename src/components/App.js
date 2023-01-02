@@ -9,6 +9,7 @@ import '../assets/css/App.css';
 import HomePage from './Pages/HomePage'
 import Products from './Pages/Products'
 import DetailsPage from './Pages/DetailsPage';
+import Cart from './Pages/Cart'
 import Navbar from './Navbar';
 
 // Importing fetching & helper functions
@@ -66,6 +67,18 @@ const App = () => {
         setCart(item)
     }
 
+    // Function that will change the quantity of the products
+    const changeItemAmount = async(id, quantity) => {
+        const updated = await commerce.cart.update(id, { quantity })
+        setCart(updated)
+    }
+
+    // Function that will remove the selected item
+    const removeFromCart = async(id) => {
+        const removed = await commerce.cart.remove(id)
+        setCart(removed)
+    }
+
     return (
         // Setting up react-router-dom
         <BrowserRouter basename={process.env.PUBLIC_URL}>
@@ -77,6 +90,7 @@ const App = () => {
                     <Route exact path='/' element={<HomePage properties={homePageProps} />}/>
                     <Route path='/products/:category' element={<Products properties={productsPageProps} add={addToCart} />} />
                     <Route path="/details/:id" element={<DetailsPage add={addToCart} />} />
+                    <Route path='/cart' element={<Cart cart={cart} clicks={{changeItemAmount, removeFromCart}} />} />
                 </Routes>
                 {/* Link routes end */}
                 

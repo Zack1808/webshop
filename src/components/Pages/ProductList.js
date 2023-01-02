@@ -9,12 +9,10 @@ import '../../assets/css/ProductList.css';
 // Creatign the ProductList component
 const ProductList = ({ products, add }) => {
 
-    console.log(products)
-
     return ( 
         <div className="product-list-container">
             {products && products.map(product => {
-                return <Card product={product} key={product.id} add={add} />
+                return <Card product={product} key={product.id} click={add} prodDisplay />
             })}
         </div>
     )
