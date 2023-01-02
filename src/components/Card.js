@@ -19,7 +19,7 @@ const Card = ({ product, click, prodDisplay }) => {
             <div className="card-image" style={{ backgroundImage: `url(${product.image.url})`}}></div>
             <div className="card-content">
                 <h4 className="card-title">{product.name}</h4>
-                <h4>Price: {product.price.formatted_with_symbol}</h4>
+                <h4>Price: {product.line_total ? product.line_total.formatted_with_symbol : product.price.formatted_with_symbol}</h4>
                 {
                     prodDisplay ? (
                         <div className="card-buttons">

@@ -17,7 +17,7 @@ const Cart = ({cart, clicks}) => {
         </div>
     )
 
-    if(cart.total_items == 0) return (
+    if(cart.total_items === 0) return (
         <div className="not-found">
             <h1>Oops, something's wrong!</h1>
             <p>You do not have any items in the cart. <Link to="/">Click here to return to the homepage.</Link></p>
