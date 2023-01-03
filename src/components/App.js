@@ -10,6 +10,7 @@ import HomePage from './Pages/HomePage'
 import Products from './Pages/Products'
 import DetailsPage from './Pages/DetailsPage';
 import Cart from './Pages/Cart'
+import Checkout from './Pages/Checkout'
 import Navbar from './Navbar';
 
 // Importing fetching & helper functions
@@ -97,6 +98,7 @@ const App = () => {
                     <Route path='/products/:category' element={<Products properties={productsPageProps} add={addToCart} />} />
                     <Route path="/details/:id" element={<DetailsPage add={addToCart} />} />
                     <Route path='/cart' element={<Cart cart={cart} clicks={{changeItemAmount, removeFromCart, emptyCart}} />} />
+                    <Route path='/checkout' element={<Checkout />} />
                 </Routes>
                 {/* Link routes end */}
                 

@@ -69,7 +69,7 @@ const Cart = ({cart, clicks}) => {
                     <hr />
                     <div className="column">
                         <button className="btn btn-add" onClick={clicks.emptyCart}>Empty cart</button>
-                        <button className="btn btn-add">Checkout</button>
+                        <Link to="/checkout" className="btn btn-add link">Checkout</Link>
                     </div>
                 </div>
             </div>

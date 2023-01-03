@@ -48,6 +48,11 @@
     flex-direction: column;
     gap: 10px
 }
+
+.btn.btn-add.link {
+    padding-block: 8px;
+    font-weight: normal;
+}
 /* Cart styling light mode end */
 
 /* Cart styling dark mode start */
