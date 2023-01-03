@@ -50,6 +50,10 @@
     transition: all .5s ease-in-out;
 }
 
+.product-amount {
+    color: var(--dark);
+    transition: all .5s ease-in-out
+}
 
 .card-buttons.active {
     opacity: 1;
@@ -104,6 +108,10 @@ a.btn {
 .dark .btn-add {
     background-color: var(--light-bg);
     color: var(--dark)
+}
+
+.dark .product-amount {
+    color: var(--light)
 }
 /* Card styling dark mode end */
 

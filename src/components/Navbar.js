@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import VideogameAssetIcon from '@mui/icons-material/VideogameAsset';
 import { UilShoppingCart } from '@iconscout/react-unicons'
 
@@ -12,6 +12,10 @@ import '../assets/css/Navbar.css'
 
 // Creating the Navbar component
 const Navbar = ({ dark, setDark, total}) => {
+
+    // Variable that contains the path information
+    const location = useLocation()
+
     return (
         <nav className='navbar'>
 
@@ -27,9 +31,13 @@ const Navbar = ({ dark, setDark, total}) => {
             {/* Button display start */}
             <div className="navbar-buttons">
                 <SwitchButton toggle={dark} setToggle={setDark} />
-                <Badge amount={total}>
-                    <Link to="/cart"><UilShoppingCart/></Link>
-                </Badge>
+                {
+                    location.pathname !== '/cart' && location.pathname !== "/checkout" && (
+                        <Badge amount={total}>
+                            <Link to="/cart"><UilShoppingCart/></Link>
+                        </Badge>
+                    )
+                }
             </div>
             {/* Button display end */}
 
