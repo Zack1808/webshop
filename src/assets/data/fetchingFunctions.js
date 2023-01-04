@@ -49,3 +49,34 @@ export const fetchCategoryProductCount = async (slug, setAmount) => {
 export const fetchCart = async(setCart) => {
     setCart(await commerce.cart.retrieve())
 }
+
+// Function that will generate the cart token
+export const generateToken = async(cart, setToken) => {
+    try {
+        const token = await commerce.checkout.generateToken(cart.id, { type: 'cart'});
+        setToken(token)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+// Function that will fetch all the sipping countries 
+export const fetchShippingContries = async(token, setShippingCountries, setShippingCountry) => {
+    const { countries } = await commerce.services.localeListShippingCountries(token)
+    setShippingCountries(countries)
+    setShippingCountry(Object.keys(countries)[0])
+}
+
+// Function that will fetch all the subdivisions or states of the selected country
+export const fetchSubDivisions = async(country, setShippingRegions, setShippingRegion) => {
+    const { subdivisions } = await commerce.services.localeListSubdivisions(country)
+    setShippingRegions(subdivisions)
+    setShippingRegion(Object.keys(subdivisions)[0])
+}
+
+// Function that will fetch the shipping option for the country/region
+export const fetchShippingOptions = async(token, country, region, setShippingOptions, setShippingOption) => {
+    const options  = await commerce.checkout.getShippingOptions(token.id, { country, region})
+    setShippingOptions(options)
+    setShippingOption(options[0].id)
+}
