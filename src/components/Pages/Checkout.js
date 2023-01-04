@@ -1,37 +1,35 @@
 import React, { useState } from 'react';
-import { UilCheck } from '@iconscout/react-unicons'
 
 // Importing the style file
 import "../../assets/css/Checkout.css"
 
+// Importing the costume made components 
+import Stepper from '../Stepper'
+
 // Creating the Checkout component
 const Checkout = () => {
 
+    // Variable and state definition start
     const [step, setStep] = useState(1)
+
+    // Steps that will be displayed in the stepper component
+    const steps = [
+        {
+            id: 1,
+            name: "Shipping Address"
+        },
+        {
+            id: 2,
+            name: "Payment Details"
+        }
+    ]
+    // Variable and state definition end
 
     return (
         <div className="checkout-container">
             <div className="forms">
                 <h1>Checkout</h1>
-                <div className="stepper">
-                    <div className="step">
-                        <span className='active'>
-                            {
-                                step === 1 ? "1" : <UilCheck />
-                            }
-                        </span>
-                        <small>Shipping address</small>
-                    </div>
-                    <hr />
-                    <div className="step">
-                        <span className={step >= 2 && `active`}>
-                            {
-                                step <= 2 ? "2" : <UilCheck />
-                            }
-                        </span>
-                        <small>Payment Details</small>
-                    </div>
-                </div>
+                <Stepper step={step} steps={steps} />
             </div>
         </div>
     )
