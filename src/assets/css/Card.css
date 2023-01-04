@@ -66,8 +66,8 @@
 .btn {
     text-decoration: none;
     background-color: var(--light);
-    padding:10px 15px;
-    font-weight: 600;
+    padding:15px;
+    font-weight: 900;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -75,6 +75,10 @@
     border-radius: 10px;
     color: var(--dark);
     transition: all .5s ease-in-out
+}
+
+.card-container .btn-add {
+    padding-block: 10px;
 }
 
 a.btn {

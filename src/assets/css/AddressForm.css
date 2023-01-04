@@ -45,11 +45,6 @@ form select option{
 form .full-width {
     width: 100%;
 }
-
-form .btn-add {
-    font-weight: 900;
-    padding: 15px;
-}
 /* AddressForm styling light mode end */
 
 /* AddressForm styling dark mode start */

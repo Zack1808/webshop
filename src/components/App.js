@@ -98,7 +98,7 @@ const App = () => {
                     <Route path='/products/:category' element={<Products properties={productsPageProps} add={addToCart} />} />
                     <Route path="/details/:id" element={<DetailsPage add={addToCart} />} />
                     <Route path='/cart' element={<Cart cart={cart} clicks={{changeItemAmount, removeFromCart, emptyCart}} />} />
-                    <Route path='/checkout' element={<Checkout cart={cart} />} />
+                    <Route path='/checkout' element={<Checkout cart={cart} darkMode={darkMode} />} />
                 </Routes>
                 {/* Link routes end */}
                 

@@ -5,4 +5,24 @@
     width: 100%;
     flex-direction: column;
     align-items: center;
+    gap: 20px;
+}
+
+.payment-form-container form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: stretch;
+}
+
+.payment-form-container span {
+    background-color: var(--light);
+    padding: 10px;
+    transition: all .5s ease-in-out;
+}
+/* PaymentForm styling light mode end*/
+
+/* PaymentForm styling dark mode start */
+.dark .payment-form-container span {
+    background-color: var(--dark);
 }
