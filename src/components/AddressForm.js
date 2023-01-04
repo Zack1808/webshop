@@ -172,7 +172,7 @@ const AddressForm = ({ token, handleSubmit }) => {
             </div>
             <div className="card-buttons active">
                 <Link to="/cart" className='btn'>Back to Cart</Link>
-                {!isWaiting && <button className="btn btn-add" type='submit'>Next Step</button>}
+                <button className="btn btn-add" type='submit' disabled={isWaiting}>Next Step</button>
             </div>
         </form>
     )

@@ -6,6 +6,7 @@ import "../../assets/css/Checkout.css"
 // Importing the costume made components 
 import Stepper from '../Stepper'
 import AddressForm from '../AddressForm';
+import PaymentForm from '../PaymentForm'
 import Loader from '../Loader';
 
 // Importing the helper functions
@@ -15,7 +16,7 @@ import { generateToken } from '../../assets/data/fetchingFunctions';
 const Checkout = ({ cart }) => {
 
     // Variable and state definition start
-    const [step, setStep] = useState(1)
+    const [step, setStep] = useState(2)
     const [token, setToken] = useState(null)
     const [data, setData] = useState([])
 
@@ -53,6 +54,9 @@ const Checkout = ({ cart }) => {
                 <Stepper step={step} steps={steps} />
                 {
                     step === 1 && <AddressForm token={token} handleSubmit={next} />
+                }
+                {
+                    step === 2 && <PaymentForm token={token} />
                 }
             </div>
         </div>
