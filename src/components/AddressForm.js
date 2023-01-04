@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react'
+import { Link } from 'react-router-dom'
 
 // Importing the style file
 import '../assets/css/AddressForm.css'
@@ -10,19 +11,19 @@ import Input from './Input'
 import { fetchShippingContries, fetchSubDivisions, fetchShippingOptions } from '../assets/data/fetchingFunctions'
 
 // Creating the AddressForm component
-const AddressForm = ({ token }) => {
+const AddressForm = ({ token, handleSubmit }) => {
 
     // Variable and state definition
     const [shippingCountries, setShippingCountries] = useState([])
-    const [shippingCoutry, setShippingCountry] = useState("")
+    const [shippingCountry, setShippingCountry] = useState("")
     const [shippingRegions, setShippingRegions] = useState([])
     const [shippingRegion, setShippingRegion] = useState("")
     const [shippingOptions, setShippingOptions] = useState([])
     const [shippingOption, setShippingOption] = useState("")
     const [isWaiting, setIsWaiting] = useState(true)
 
-    const name = useRef(null)
-    const surname = useRef(null)
+    const firstName = useRef(null)
+    const lastName = useRef(null)
     const address = useRef(null)
     const email = useRef(null)
     const city = useRef(null)
@@ -36,7 +37,7 @@ const AddressForm = ({ token }) => {
             required: true,
             icon: "user",
             type: "text",
-            reference: name
+            reference: firstName
         },
         {
             id: 2,
@@ -45,7 +46,7 @@ const AddressForm = ({ token }) => {
             required: true,
             icon: "user",
             type: "text",
-            reference: surname
+            reference: lastName
         },
         {
             id: 3,
@@ -85,19 +86,29 @@ const AddressForm = ({ token }) => {
         },
     ]
 
+    const countries = Object.entries(shippingCountries).map(([ code, name]) => ({id: code, label: name}))
+    const regions = Object.entries(shippingRegions).map(([ code, name ]) => ({ id: code, label: name}))
+    const options = shippingOptions.map(option => ({ id: option.id, label: `${option.description} - ${option.price.formatted_with_symbol}`}))
+
     // Variable and state definition end
 
     // useEffect functions start
     useEffect(() => {
+        setShippingOption("")
         fetchShippingContries(token, setShippingCountries, setShippingCountry)
+        setIsWaiting(true)
     }, [])
 
     useEffect(() => {
-        if(shippingCoutry) fetchSubDivisions(shippingCoutry, setShippingRegion, setShippingRegion)
-    }, [shippingCoutry])
+        setShippingOption("")
+        if(shippingCountry) fetchSubDivisions(shippingCountry, setShippingRegions, setShippingRegion)
+        setIsWaiting(true)
+    }, [shippingCountry])
 
     useEffect(() => {
-        if(shippingRegion) fetchShippingOptions(token, shippingCoutry, shippingRegion, setShippingOptions, setShippingOption)
+        setShippingOption("")
+        if(shippingRegion) fetchShippingOptions(token, shippingCountry, shippingRegion, setShippingOptions, setShippingOption)
+        setIsWaiting(true)
     }, [shippingRegion])
 
     useEffect(() => {
@@ -105,13 +116,63 @@ const AddressForm = ({ token }) => {
     }, [shippingOption])
     // useEffect functions end
 
+    
+
     return (
-        <form className="address-form-container">
+        <form className="address-form-container" onSubmit={
+            () => handleSubmit(
+                { 
+                    firstName: firstName.current.value, 
+                    lastName: lastName.current.value,
+                    address: address.current.value,
+                    email: email.current.value,
+                    city: city.current.value,
+                    zip: zip.current.value,
+                    shippingCountry,
+                    shippingRegion,
+                    shippingOption
+                }
+            )
+        }>
             <h3>Shipping Address</h3>
             <div className="inputs">
                 {inputs.map(input => (
                     <Input inputInformation={input} ref={input.reference} key={input.id} />
                 ))}
+                <div className="input-select">
+                    <label htmlFor="country">Country*</label>
+                    <select name="country" value={shippingCountry} onChange={e => setShippingCountry(e.target.value)}>
+                        {
+                            countries.map(country => (
+                                <option value={country.id} key={country.id}>{country.label}</option>
+                            ))
+                        }
+                    </select>
+                </div>
+                <div className="input-select">
+                    <label htmlFor="country">Region/State*</label>
+                    <select name="country" value={shippingRegion} onChange={e => setShippingRegion(e.target.value)}>
+                        {
+                            regions.map(region => (
+                                <option value={region.id} key={region.id}>{region.label}</option>
+                            ))
+                        }
+                    </select>
+                </div>
+            </div>
+            <div className="input-select full-width">
+                <label htmlFor="country">Shipping Options</label>
+                <select name="country" value={shippingOption} onChange={e => setShippingOption(e.target.value)}>
+                    {
+                        options.map(option => (
+                            <option value={option.id} key={option.id}>{option.label}</option>
+                        ))
+                    }
+                </select>
+            </div>
+            <div className="card-buttons active">
+                <Link to="/cart" className='btn'>Back to Cart</Link>
+                {!isWaiting && <button className="btn btn-add" type='submit'>Next Step</button>}
             </div>
         </form>
     )

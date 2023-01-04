@@ -17,6 +17,7 @@ const Checkout = ({ cart }) => {
     // Variable and state definition start
     const [step, setStep] = useState(1)
     const [token, setToken] = useState(null)
+    const [data, setData] = useState([])
 
     // Steps that will be displayed in the stepper component
     const steps = [
@@ -37,6 +38,12 @@ const Checkout = ({ cart }) => {
     }, [cart])
     // useEffect functions end
 
+    // Functions start 
+    const next = (info) => {
+        setData(info)
+        setStep(previousStep => previousStep + 1)
+    }
+
     if(!token) return <Loader />
 
     return (
@@ -45,7 +52,7 @@ const Checkout = ({ cart }) => {
                 <h1>Checkout</h1>
                 <Stepper step={step} steps={steps} />
                 {
-                    step === 1 && <AddressForm token={token} />
+                    step === 1 && <AddressForm token={token} handleSubmit={next} />
                 }
             </div>
         </div>
