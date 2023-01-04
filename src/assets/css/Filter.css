@@ -35,6 +35,11 @@
     flex-direction: column;
     gap: .7em
 }
+
+.toggled {
+    transform: rotate(-180deg);
+    transition: transform .01s ease-in-out;
+}
 /* Category list styling end */
 /* Category styling light mode end */
 
@@ -64,11 +69,6 @@
 
     .active {
         display: flex;
-    }
-
-    .toggled {
-        transform: rotate(-180deg);
-        transition: transform .01s ease-in-out;
     }
 }
 /* Category styling mobile mode end */
