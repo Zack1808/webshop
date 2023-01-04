@@ -1,0 +1,54 @@
+/* Stepper styling start */
+/* Stepper styling light mode start */
+.stepper {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+}
+.stepper hr {
+    width: 100%;
+    background: var(--dark);
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+    align-self: flex-start;
+    gap: 5px;
+    width: 120px;
+}
+
+.step span {
+    border: 2px solid var(--dark);
+    display: flex;
+    width: 30px;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-weight: bolder;
+    color: var(--dark);
+    transition: all .5s ease-in-out;
+}
+
+.step .active {
+    background-color: var(--dark);
+    color: var(--light);
+}
+/* Stepper styling light mode end */
+
+/* Stepper styling dark mode start */
+.dark .step span{
+    border-color: var(--light);
+    color: var(--light);
+}
+
+.dark .step .active {
+    background-color: var(--light);
+    color: var(--dark);
+}

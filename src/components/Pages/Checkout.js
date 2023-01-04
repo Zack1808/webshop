@@ -10,7 +10,7 @@ import Stepper from '../Stepper'
 const Checkout = () => {
 
     // Variable and state definition start
-    const [step, setStep] = useState(1)
+    const [step, setStep] = useState(4)
 
     // Steps that will be displayed in the stepper component
     const steps = [
