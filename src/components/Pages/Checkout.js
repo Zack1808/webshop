@@ -7,13 +7,14 @@ import "../../assets/css/Checkout.css"
 import Stepper from '../Stepper'
 import AddressForm from '../AddressForm';
 import PaymentForm from '../PaymentForm'
+import Confirmation from '../Confirmation';
 import Loader from '../Loader';
 
 // Importing the helper functions
 import { generateToken } from '../../assets/data/fetchingFunctions';
 
 // Creating the Checkout component
-const Checkout = ({ cart, darkMode, handleCheckout }) => {
+const Checkout = ({ cart, darkMode, handleCheckout, order, err }) => {
 
     // Variable and state definition start
     const [step, setStep] = useState(1)
@@ -57,6 +58,9 @@ const Checkout = ({ cart, darkMode, handleCheckout }) => {
                 }
                 {
                     step === 2 && <PaymentForm token={token} darkMode={darkMode} setStep={setStep} shippingData={data} handleCheckout={handleCheckout} />
+                }
+                {
+                    step === 3 && <Confirmation order={order} err={err} />
                 }
             </div>
         </div>

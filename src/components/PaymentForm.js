@@ -9,7 +9,7 @@ import "../assets/css/PaymentForm.css"
 import ItemsReview from './ItemsReview'
 
 // Creating the stripe promise
-const stripePromise = loadStripe("pk_test_51LqcGyEpbrLAgRpbHJFeKtSoPqDQXpffqOGj6aePCGpzy9y23Pp1mJYDpyjeOEzXFwPRUN7xqeJzWcGIvv9oA64C00HL6qNgRt")
+const stripePromise = loadStripe("pk_test_51MMdvFHRZkQBmkpdLtukIUhQvpcDLI0GDxX1ygj3UkYYWUj9vezStkdCiXQViQVSBJVy30PIw2ax1GEH6zdAxvmq00VPwPjzEL")
 
 // Creating the PaymentForm component 
 const PaymentForm = ({ token, darkMode, setStep, shippingData, handleCheckout }) => {
@@ -33,45 +33,43 @@ const PaymentForm = ({ token, darkMode, setStep, shippingData, handleCheckout })
 
     // Functions start
     const handleSubmit = async(e, elements, stripe) => {
-        e.preventDefault()
-        if(!stripe || !elements) return
-        const cardElement = elements.getElement(CardElement)
-        console.log(cardElement)
-        if(cardElement.message) return
-        const { error, paymentMethod } = await stripe.createPaymentMethod({ type: "card", card: cardElement})
+        e.preventDefault();
+        if(!stripe || !elements) return;
+        const cardElement = elements.getElement(CardElement);
+        const { error, paymentMethod } = await stripe.createPaymentMethod({ type: 'card', card: cardElement})
         if(error) console.log(error)
         else {
-            const orderData = {
-              line_items: token.line_items,
-              customer: {
-                firstname: shippingData.firstName,
-                lastname: shippingData.lastName,
-                email: shippingData.email,
-              },
-              billing: {
-                name: 'Primary',
-                street: shippingData.address,
-                town_city: shippingData.city,
-                county_state: shippingData.shippingRegion,
-                postal_zip_code: shippingData.zip,
-                country: shippingData.shippingCountry
-              },
-              shipping: {
-                name: 'Primary',
-                street: shippingData.address,
-                town_city: shippingData.city,
-                county_state: shippingData.shippingRegion,
-                postal_zip_code: shippingData.zip,
-                country: shippingData.shippingCountry
-              },
-              fulfillment: { shipping_method: shippingData.shippingOption},
-              payment: {
-                gateway: 'stripe',
-                stripe: {
-                  payment_method_id: paymentMethod.id,
-                }
-              }
+        const orderData = {
+            line_items: token.line_items,
+            customer: {
+            firstname: shippingData.firstName,
+            lastname: shippingData.lastName,
+            email: shippingData.email,
+            },
+            billing: {
+            name: 'Primary',
+            street: shippingData.address,
+            town_city: shippingData.city,
+            county_state: shippingData.shippingRegion,
+            postal_zip_code: shippingData.zip,
+            country: shippingData.shippingCountry
+            },
+            shipping: {
+            name: 'Primary',
+            street: shippingData.address,
+            town_city: shippingData.city,
+            county_state: shippingData.shippingRegion,
+            postal_zip_code: shippingData.zip,
+            country: shippingData.shippingCountry
+            },
+            fulfillment: { shipping_method: shippingData.shippingOption},
+            payment: {
+            gateway: 'stripe',
+            stripe: {
+                payment_method_id: paymentMethod.id,
             }
+            }
+        }
             handleCheckout(token.id, orderData)
             setStep(previousStep => previousStep + 1)
         }

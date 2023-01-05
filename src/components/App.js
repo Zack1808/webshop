@@ -97,8 +97,10 @@ const App = () => {
     // Function that will capture the checkout order
     const handleCheckout = async(tokenId, newOrder) => {
         try {
+            console.log()
             const incomming = await commerce.checkout.capture(tokenId, newOrder)
             setOrder(incomming)
+            refreshCart()
         } catch (error) {
             setErr(error.data.error.message)
         }
@@ -116,7 +118,7 @@ const App = () => {
                     <Route path='/products/:category' element={<Products properties={productsPageProps} add={addToCart} />} />
                     <Route path="/details/:id" element={<DetailsPage add={addToCart} />} />
                     <Route path='/cart' element={<Cart cart={cart} clicks={{changeItemAmount, removeFromCart, emptyCart}} />} />
-                    <Route path='/checkout' element={<Checkout cart={cart} darkMode={darkMode} handleCheckout={handleCheckout} />} />
+                    <Route path='/checkout' element={<Checkout cart={cart} darkMode={darkMode} handleCheckout={handleCheckout} order={order} err={err} />} />
                 </Routes>
                 {/* Link routes end */}
                 
