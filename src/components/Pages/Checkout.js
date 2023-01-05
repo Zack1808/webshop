@@ -13,10 +13,10 @@ import Loader from '../Loader';
 import { generateToken } from '../../assets/data/fetchingFunctions';
 
 // Creating the Checkout component
-const Checkout = ({ cart, darkMode }) => {
+const Checkout = ({ cart, darkMode, handleCheckout }) => {
 
     // Variable and state definition start
-    const [step, setStep] = useState(2)
+    const [step, setStep] = useState(1)
     const [token, setToken] = useState(null)
     const [data, setData] = useState([])
 
@@ -56,7 +56,7 @@ const Checkout = ({ cart, darkMode }) => {
                     step === 1 && <AddressForm token={token} handleSubmit={next} />
                 }
                 {
-                    step === 2 && <PaymentForm token={token} darkMode={darkMode} />
+                    step === 2 && <PaymentForm token={token} darkMode={darkMode} setStep={setStep} shippingData={data} handleCheckout={handleCheckout} />
                 }
             </div>
         </div>

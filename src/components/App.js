@@ -25,6 +25,8 @@ const App = () => {
     const [categories, setCategories] = useState([])
     const [selectedCategory, setSelectedCategory] = useState("")
     const [cart, setCart] = useState({})
+    const [order, setOrder] = useState({})
+    const [err, setErr] = useState("")
 
     const homePageProps = {
         categories,
@@ -85,6 +87,22 @@ const App = () => {
         const empty = await commerce.cart.empty()
         setCart(empty)
     }
+    
+    // Function that will refresh the cart
+    const refreshCart = async() => {
+        const newCart = await commerce.cart.refresh()
+        setCart(newCart)
+    }
+
+    // Function that will capture the checkout order
+    const handleCheckout = async(tokenId, newOrder) => {
+        try {
+            const incomming = await commerce.checkout.capture(tokenId, newOrder)
+            setOrder(incomming)
+        } catch (error) {
+            setErr(error.data.error.message)
+        }
+    }
 
     return (
         // Setting up react-router-dom
@@ -98,7 +116,7 @@ const App = () => {
                     <Route path='/products/:category' element={<Products properties={productsPageProps} add={addToCart} />} />
                     <Route path="/details/:id" element={<DetailsPage add={addToCart} />} />
                     <Route path='/cart' element={<Cart cart={cart} clicks={{changeItemAmount, removeFromCart, emptyCart}} />} />
-                    <Route path='/checkout' element={<Checkout cart={cart} darkMode={darkMode} />} />
+                    <Route path='/checkout' element={<Checkout cart={cart} darkMode={darkMode} handleCheckout={handleCheckout} />} />
                 </Routes>
                 {/* Link routes end */}
                 

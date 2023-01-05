@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Elements, CardElement, ElementsConsumer } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 
@@ -12,9 +12,11 @@ import ItemsReview from './ItemsReview'
 const stripePromise = loadStripe("pk_test_51LqcGyEpbrLAgRpbHJFeKtSoPqDQXpffqOGj6aePCGpzy9y23Pp1mJYDpyjeOEzXFwPRUN7xqeJzWcGIvv9oA64C00HL6qNgRt")
 
 // Creating the PaymentForm component 
-const PaymentForm = ({ token, darkMode }) => {
+const PaymentForm = ({ token, darkMode, setStep, shippingData, handleCheckout }) => {
 
     // Variable and state definition start
+    const [isFilled, setIsFilled] = useState(false)
+
     const light = {
         color: "#0b0b0b",
         iconColor: "#0b0b0b",
@@ -30,8 +32,49 @@ const PaymentForm = ({ token, darkMode }) => {
     // Variable and state definition end
 
     // Functions start
-    const handleSubmit = (e, elements, stripe) => {
-        
+    const handleSubmit = async(e, elements, stripe) => {
+        e.preventDefault()
+        if(!stripe || !elements) return
+        const cardElement = elements.getElement(CardElement)
+        console.log(cardElement)
+        if(cardElement.message) return
+        const { error, paymentMethod } = await stripe.createPaymentMethod({ type: "card", card: cardElement})
+        if(error) console.log(error)
+        else {
+            const orderData = {
+              line_items: token.line_items,
+              customer: {
+                firstname: shippingData.firstName,
+                lastname: shippingData.lastName,
+                email: shippingData.email,
+              },
+              billing: {
+                name: 'Primary',
+                street: shippingData.address,
+                town_city: shippingData.city,
+                county_state: shippingData.shippingRegion,
+                postal_zip_code: shippingData.zip,
+                country: shippingData.shippingCountry
+              },
+              shipping: {
+                name: 'Primary',
+                street: shippingData.address,
+                town_city: shippingData.city,
+                county_state: shippingData.shippingRegion,
+                postal_zip_code: shippingData.zip,
+                country: shippingData.shippingCountry
+              },
+              fulfillment: { shipping_method: shippingData.shippingOption},
+              payment: {
+                gateway: 'stripe',
+                stripe: {
+                  payment_method_id: paymentMethod.id,
+                }
+              }
+            }
+            handleCheckout(token.id, orderData)
+            setStep(previousStep => previousStep + 1)
+        }
     }
     // Functions end
 
@@ -57,11 +100,11 @@ const PaymentForm = ({ token, darkMode }) => {
                                     style: {
                                         base: styling
                                     }
-                                }} />
+                                }} onChange={e => {e.complete && setIsFilled(true)}} />
                             </span>
                             <div className="card-buttons active">
-                                <button className='btn'>Back to previous step</button>
-                                <button className="btn btn-add" type='submit' disabled={!stripe}>Pay {token.subtotal.formatted_with_symbol}</button>
+                                <button className='btn' onClick={() => {setStep(previousStep => previousStep - 1)}}>Back to previous step</button>
+                                <button className="btn btn-add" type='submit' disabled={!stripe || !isFilled}>Pay {token.subtotal.formatted_with_symbol}</button>
                             </div>
                         </form>
                     )}
