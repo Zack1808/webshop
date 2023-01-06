@@ -1,5 +1,6 @@
 .products-container {
     padding: 70px 20px 0;
+    min-height: 100vh;
 }
 
 .message-display {
