@@ -40,8 +40,6 @@ const DetailsPage = ({ add }) => {
     }
     // Funcitons end
 
-    console.log(product)
-
     if(!product) return <Loader />
 
 

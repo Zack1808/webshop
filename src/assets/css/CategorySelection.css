@@ -1,6 +1,7 @@
 /* CategorySelection styling start */
 /* CategorySelection styling light mode start */
-.category-selection-container {width: 100%;
+.category-selection-container {
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     width: 100%;

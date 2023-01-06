@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom'
 
 // Importing the css file
 import '../../assets/css/Products.css'
@@ -25,6 +26,7 @@ const Products = ({ properties, add }) =>{
     const [products, setProducts] = useState([])
     const [selectedProducts, setSelectedProducts] = useState([])
     const [lowToHigh, setLowToHigh] = useState(true)
+    const [isSearched, setIsSearched] = useState(false)
 
     const sorting = [
         {
@@ -50,6 +52,7 @@ const Products = ({ properties, add }) =>{
             fetchProducts(properties.selectedCategory, setProducts)
         }
         properties.setSelectedCategory(JSON.parse(localStorage.getItem("react-webshop-selected-category")))
+        setIsSearched(false)
 
         // Removing the warning message that requests dependencies
         // eslint-disable-next-line
@@ -64,6 +67,7 @@ const Products = ({ properties, add }) =>{
         setSelectedSubCategories([])
         fetchProducts(properties.selectedCategory, setProducts)
         setLowToHigh(true)
+        setIsSearched(false)
 
         // Removing the warning message that requests dependencies
         // eslint-disable-next-line
@@ -101,23 +105,40 @@ const Products = ({ properties, add }) =>{
     }
     // Functions 
 
+    console.log(products)
+
     return (
         <div className="products-container">
             <header className="home-header">
                 <Select items={properties.categories} selected={categoryName} setSelected={properties.setSelectedCategory} />
-                <Search />
+                <Search setIsSearched={setIsSearched} setSearched={setProducts} />
             </header>
             {
-                products.length !== 0  ? (
-                    <div className='home-products'>
-                        <Filter categories={subCategories} add={addSubCategory} remove={removeSubCategory} sorting={sorting} />
-                        {selectedProducts.length !== 0 ? (
-                            <ProductList products={selectedProducts} add={add} />
+                isSearched ? (
+                    products.length !== 0  ? (
+                        products.data ? (
+                            <div className='home-products'>
+                                <ProductList products={products.data} add={add} />
+                            </div>
                         ) : (
-                            <ProductList products={products} add={add} />
-                        )}
-                    </div>
-                ) : (<Loader />)
+                            <div className="message-display">
+                                <h1>No Products Found</h1>
+                                <Link to="/" className='btn btn-add'>Return to Home</Link>
+                            </div>
+                        )
+                    ) : (<Loader />)
+                ) : (
+                    products.length !== 0  ? (
+                        <div className='home-products'>
+                            <Filter categories={subCategories} add={addSubCategory} remove={removeSubCategory} sorting={sorting} />
+                            {selectedProducts.length !== 0 ? (
+                                <ProductList products={selectedProducts} add={add} />
+                            ) : (
+                                <ProductList products={products} add={add} />
+                            )}
+                        </div>
+                    ) : (<Loader />)
+                )
             }
         </div>
     ) 

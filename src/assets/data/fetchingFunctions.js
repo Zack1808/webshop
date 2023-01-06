@@ -25,6 +25,13 @@ export const fetchProduct = async (id, setProduct) => {
     setProduct(product)
 }
 
+// Function that will fetch the products according to the search term
+export const fetchSearcedProducts = async (query, setProducts) => {
+    const product = await commerce.products.list({ query })
+    console.log(product)
+    setProducts(product)
+}
+
 // Function that will fetch the subcategories
 export const fetchSubCategories = (id, categories) => {
     if(id) {

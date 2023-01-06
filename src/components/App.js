@@ -105,7 +105,6 @@ const App = () => {
         <BrowserRouter basename={process.env.PUBLIC_URL}>
             <div className={`container ${darkMode && 'dark'}`}>
                 <Navbar dark={darkMode} setDark={setDarkMode} total={cart.total_items} />
-
                 {/* Link routes start */}
                 <Routes>
                     <Route exact path='/' element={<HomePage properties={homePageProps} />}/>

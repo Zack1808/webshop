@@ -1,6 +1,7 @@
 /* HomePage styling start */
 .home-container {
-    padding: 70px 20px 0;
+    padding: 90px 20px 0;
+    text-align: center;
 }
 
 .home-header {
@@ -22,6 +23,10 @@
     display: flex;
     width: 100%;
     justify-content: space-between;
+}
+
+.dark .home-container h1 {
+    color: var(--light);
 }
 
 /* HomePage styling mobile mode start */

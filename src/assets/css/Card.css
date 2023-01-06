@@ -6,6 +6,7 @@
     flex-direction: column;
     min-height: 400px;
     opacity: 0;
+    gap: 20px;
     padding-block: 20px;
     transform: scale(.85);
     background-color: transparent;
