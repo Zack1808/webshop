@@ -12,6 +12,7 @@ import DetailsPage from './Pages/DetailsPage';
 import Cart from './Pages/Cart'
 import Checkout from './Pages/Checkout'
 import Navbar from './Navbar';
+import Footer from './Footer'
 
 // Importing fetching & helper functions
 import { fetchCategories, fetchCart} from '../assets/data/fetchingFunctions';
@@ -39,6 +40,25 @@ const App = () => {
         selectedCategory,
         setSelectedCategory,
     }
+
+    const social = [
+        {
+            link: "https://web.facebook.com/jeanpierre.novak.391",
+            title: "Facebook"
+        },
+        {
+            link: "https://www.instagram.com/jeanpierrenovak/",
+            title: "Instagram"
+        },
+        {
+            link: "https://www.linkedin.com/in/jean-pierre-novak-2425a7218/",
+            title: "LinkedIn"
+        },
+        {
+            link: "https://github.com/Zack1808",
+            title: "GitHub"
+        }
+    ]
     // Variable and state definition end
 
     // useEffect functions start
@@ -114,7 +134,7 @@ const App = () => {
                     <Route path='/checkout' element={<Checkout cart={cart} darkMode={darkMode} handleCheckout={handleCheckout} order={order} err={err} />} />
                 </Routes>
                 {/* Link routes end */}
-                
+                <Footer social={social} />
             </div>
         </BrowserRouter>
     )

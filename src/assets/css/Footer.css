@@ -1,0 +1,117 @@
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: var(--light);
+    margin-top: 30px;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    transition: all .5s ease-in-out
+}
+
+.footer-information {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+} 
+
+.social-media {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 50%;
+    border-right: 3px solid var(--dark);
+    transition: all .5s ease-in-out
+}
+
+.social-media a {
+    color: var(--dark);
+    text-decoration: none;
+    padding: 10px 0;
+    transition: transform .5s, color .5s ease-in-out;
+}
+
+.social-media a:hover {
+    transform: scale(1.05);
+}
+
+.icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-contact-information {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+.info {
+    color: var(--dark);
+    text-decoration: none;
+    padding: 10px 0;
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    transition: all .5s ease-in-out;
+}
+
+.copyright {
+    color: var(--dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0 20px;
+    transition: all .5s ease-in-out;
+}
+
+.dark .footer-container {
+    background-color: var(--dark);
+}
+
+.dark .social-media {
+    border-color: var(--light);
+}
+
+.dark .social-media a {
+    color: var(--light)
+}
+
+.dark .info {
+    color: var(--light);
+}
+
+.dark .copyright {
+    color: var(--light)
+}
+
+@media (max-width: 900px) {
+    .footer-information {
+        flex-direction: column;
+    }
+
+    .social-media, .footer-contact-information {
+        width: 100%;
+        border: none;
+        padding: 10px 0;
+        border-bottom: 3px solid #fff;
+    }
+
+    .social-media {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .info {
+        justify-content: center;
+        width: 100%;
+    }
+}
