@@ -20,6 +20,7 @@ const DetailsPage = ({ add }) => {
     // Variable definition start
     // Setting up state
     const [product, setProduct] = useState();
+    const [quant, setQuant] = useState(1)
     // Variable definition end
 
     // Functions start
@@ -29,7 +30,17 @@ const DetailsPage = ({ add }) => {
         const id = getId()
         fetchProduct(id, setProduct);
     }, [])
+
+    const increaseAmount = () => {
+        if(quant < product.inventory.available) setQuant(prevState => prevState + 1)
+    }
+
+    const decreaseAmount = () => {
+        if(quant > 1) setQuant(prevState => prevState - 1)
+    }
     // Funcitons end
+
+    console.log(product)
 
     if(!product) return <Loader />
 
@@ -69,7 +80,18 @@ const DetailsPage = ({ add }) => {
                         </p>
                     </div>
                     <hr />
-                    {product.inventory.available > 0 ? <button className="btn btn-add" onClick={() => add(product.id, 1)}>Add to cart <UilShoppingCart /></button> : null}
+                    {
+                    product.inventory.available > 0 ? (
+                        <>
+                            <div className="details-buttons">
+                                <button className="btn btn-add" onClick={decreaseAmount}>-</button>
+                                <div className="product-amount">{quant}</div>
+                                <button className="btn btn-add" onClick={increaseAmount}>+</button>
+                            </div>
+                            <hr />
+                            <button className="btn btn-add" onClick={() => add(product.id, quant)}>Add to cart <UilShoppingCart /></button>
+                        </>
+                        ) : null}
                 </div>
             </div>
             <hr />

@@ -36,9 +36,21 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    gap: 1em;
+    gap: 20px;
     color: var(--dark);
     transition: all .5s ease-in-out;
+}
+
+.card-content h4 {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    align-items: center;
+}
+
+.card-content h4.card-title {
+    justify-content: center;
 }
 
 .card-buttons {

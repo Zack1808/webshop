@@ -97,6 +97,8 @@ const AddressForm = ({ token, handleSubmit }) => {
         setShippingOption("")
         fetchShippingContries(token, setShippingCountries, setShippingCountry)
         setIsWaiting(true)
+
+        // eslint-disable-next-line
     }, [])
 
     useEffect(() => {
@@ -109,6 +111,8 @@ const AddressForm = ({ token, handleSubmit }) => {
         setShippingOption("")
         if(shippingRegion) fetchShippingOptions(token, shippingCountry, shippingRegion, setShippingOptions, setShippingOption)
         setIsWaiting(true)
+
+        // eslint-disable-next-line
     }, [shippingRegion])
 
     useEffect(() => {

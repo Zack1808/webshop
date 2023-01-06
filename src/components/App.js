@@ -70,12 +70,6 @@ const App = () => {
         setCart(item)
     }
 
-    // Function that will change the quantity of the products
-    const changeItemAmount = async(id, quantity) => {
-        const updated = await commerce.cart.update(id, { quantity })
-        setCart(updated)
-    }
-
     // Function that will remove the selected item
     const removeFromCart = async(id) => {
         const removed = await commerce.cart.remove(id)
@@ -117,7 +111,7 @@ const App = () => {
                     <Route exact path='/' element={<HomePage properties={homePageProps} />}/>
                     <Route path='/products/:category' element={<Products properties={productsPageProps} add={addToCart} />} />
                     <Route path="/details/:id" element={<DetailsPage add={addToCart} />} />
-                    <Route path='/cart' element={<Cart cart={cart} clicks={{changeItemAmount, removeFromCart, emptyCart}} />} />
+                    <Route path='/cart' element={<Cart cart={cart} clicks={{removeFromCart, emptyCart}} />} />
                     <Route path='/checkout' element={<Checkout cart={cart} darkMode={darkMode} handleCheckout={handleCheckout} order={order} err={err} />} />
                 </Routes>
                 {/* Link routes end */}
