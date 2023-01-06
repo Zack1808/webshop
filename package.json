@@ -2,6 +2,7 @@
   "name": "webshop",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://zack1808.github.io/webshop",
   "dependencies": {
     "@chec/commerce.js": "^2.8.0",
     "@emotion/react": "^11.10.4",
@@ -30,6 +31,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
