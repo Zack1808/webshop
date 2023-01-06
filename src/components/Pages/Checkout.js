@@ -46,7 +46,7 @@ const Checkout = ({ cart, darkMode, handleCheckout, order, err }) => {
         setStep(previousStep => previousStep + 1)
     }
 
-    if(!token) return <Loader />
+    if(!token) return <div className="checkout-container"><Loader /></div>
 
     return (
         <div className="checkout-container">

@@ -40,7 +40,7 @@ const DetailsPage = ({ add }) => {
     }
     // Funcitons end
 
-    if(!product) return <Loader />
+    if(!product) return <div className="details-page-container"><Loader /></div>
 
 
     return (
