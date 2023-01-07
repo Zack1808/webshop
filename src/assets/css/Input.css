@@ -21,7 +21,9 @@
     background: none;
     border: none;
     height: 30px;
+    color: var(--dark);
     font-weight: bold;
+    transition: color .5s ease-in-out;
 }
 
 .input-field input:focus {
@@ -44,5 +46,9 @@
 
 .dark .input-field:focus-within {
     border-color: var(--light);
+}
+
+.dark .input-field input {
+    color: var(--light);
 }
 /* Input styling dark mode end */
