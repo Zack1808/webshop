@@ -83,7 +83,7 @@ export const fetchSubDivisions = async(country, setShippingRegions, setShippingR
 
 // Function that will fetch the shipping option for the country/region
 export const fetchShippingOptions = async(token, country, region, setShippingOptions, setShippingOption) => {
-    const options  = await commerce.checkout.getShippingOptions(token.id, { country, region})
-    setShippingOptions(options)
+    const options  = await commerce.checkout.getShippingOptions(token.id, { country, region });
+    setShippingOptions(options);
     setShippingOption(options[0].id)
 }

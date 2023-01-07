@@ -12,6 +12,7 @@ import DetailsPage from './Pages/DetailsPage';
 import Cart from './Pages/Cart'
 import Checkout from './Pages/Checkout'
 import Navbar from './Navbar';
+import Modal from './Modal';
 import Footer from './Footer'
 
 // Importing fetching & helper functions
@@ -28,6 +29,7 @@ const App = () => {
     const [cart, setCart] = useState({})
     const [order, setOrder] = useState({})
     const [err, setErr] = useState("")
+    const [modal, setModal] = useState(true)
 
     const homePageProps = {
         categories,
@@ -84,6 +86,15 @@ const App = () => {
         localStorage.setItem("react-webshop-categories", JSON.stringify(categories))
     }, [categories])
 
+    useEffect(() => {
+        if (modal) {
+          document.body.style.overflow = 'hidden'
+        }
+        else {
+            document.body.style.overflow = 'auto'
+        }
+      }, [modal])
+
     // Function that will add items to the cart
     const addToCart = async(id, amount) => {
         const item = await commerce.cart.add(id, amount)
@@ -135,6 +146,9 @@ const App = () => {
                 </Routes>
                 {/* Link routes end */}
                 <Footer social={social} />
+                {
+                    modal ? <Modal setModal={setModal} dark={darkMode} /> : null
+                }
             </div>
         </BrowserRouter>
     )
