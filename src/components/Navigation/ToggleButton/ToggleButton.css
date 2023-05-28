@@ -1,0 +1,45 @@
+/* Styling the ToggleButton */
+.toggle-button-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 3.5rem;
+  aspect-ratio: 2/1;
+  background-color: var(--bg-color);
+  border-radius: 100vw;
+  padding: 0.2em;
+  border: 2px solid var(--slider-button);
+  transition: 0.3s ease-in-out;
+}
+
+/* Styling the handle */
+.handle {
+  height: 90%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background-color: var(--slider-button);
+  position: relative;
+  transition: 0.3s ease-in-out;
+}
+
+.handle::before {
+  content: "";
+  background-color: var(--slider-button);
+  position: absolute;
+  inset: -0.2em;
+  border-radius: inherit;
+  filter: blur(5px);
+  transition: 0.3s ease-in-out;
+  animation: flicker 1s ease-in-out infinite alternate;
+}
+
+@keyframes flicker {
+  0% {
+    transform: scale(0.6);
+  }
+}
+
+/* Styling the toggled state */
+.toggle-button-container[data-toggle="true"] .handle {
+  margin-left: 60%;
+}

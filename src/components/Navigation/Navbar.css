@@ -1,0 +1,26 @@
+/* Styling the Navbar component */
+.navbar-container {
+  padding: 0 1.5em;
+  background-color: var(--navbar-bg);
+  color: var(--txt-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  transition: 0.3s ease-in-out;
+}
+
+/* Styling the logo */
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--txt-color);
+  gap: 0.5em;
+  user-select: none;
+  transition: 0.3s ease-in-out;
+}
+
+.logo h1 {
+  font-weight: 900;
+}
