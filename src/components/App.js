@@ -2,6 +2,7 @@ import React from "react";
 
 // Importing the costume components
 import Navbar from "./Navigation/Navbar";
+import SearchBar from "./SearchBar/Searchbar";
 
 // Importing the contexts
 import { useTheme } from "../context/themeContext";
@@ -17,6 +18,7 @@ const App = () => {
   return (
     <div className={`app-container ${dark ? "dark" : ""}`}>
       <Navbar />
+      <SearchBar />
     </div>
   );
 };

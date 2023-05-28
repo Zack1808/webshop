@@ -17,6 +17,7 @@
   --txt-color: hsl(0 0% 10%);
   --container-color: hsl(0 0% 85%);
   --btn-bg: hsl(0 0% 10%);
+  --btn-text: hsl(0 0% 90%);
   --navbar-bg: hsl(0 0% 87%);
   --slider-button: hsl(0 0% 10%);
   --logo-size: 4.5rem;
@@ -39,4 +40,5 @@
   --btn-bg: hsl(0 0% 90%);
   --navbar-bg: hsl(0 0% 10%);
   --slider-button: hsl(0 0% 90%);
+  --btn-text: hsl(0 0% 10%);
 }

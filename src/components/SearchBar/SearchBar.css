@@ -1,0 +1,42 @@
+/* Styling the SearchBar component */
+.search-bar-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-bar-container form {
+  width: 95%;
+  max-width: 1000px;
+  display: flex;
+  justify-content: center;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 2em) 100%, 2em 100%);
+  position: relative;
+  z-index: 1;
+}
+
+/* Styling the input */
+.search-bar-container input {
+  width: 100%;
+  font-weight: 700;
+  font-size: var(--text-size);
+  border: 0;
+  padding-inline: 2.5rem 0;
+  background-color: var(--container-color);
+  color: var(--txt-color);
+  transition: 0.3s ease-in-out;
+}
+
+.search-bar-container input:focus {
+  outline: none;
+}
+
+/* Styling the button */
+.search-bar-container button {
+  background-color: var(--btn-bg);
+  border: 0;
+  padding: 0.5rem 2.5rem 0.5rem 1.5rem;
+  color: var(--btn-text);
+  transition: 0.3s ease-in-out;
+}
