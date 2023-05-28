@@ -1,13 +1,23 @@
 /* Styling the Navbar component */
 .navbar-container {
-  padding: 0 1.5em;
+  padding: 0.2em 1.5em;
   background-color: var(--navbar-bg);
   color: var(--txt-color);
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   width: 100%;
   transition: 0.3s ease-in-out;
+}
+
+/* Styling the container  */
+.container {
+  width: 100%;
+  max-width: 1500px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  container-type: inline-size;
 }
 
 /* Styling the logo */
@@ -23,4 +33,12 @@
 
 .logo h1 {
   font-weight: 900;
+  font-size: var(--title-size);
+}
+
+/*  */
+@container (width < 400px) {
+  .logo h1 {
+    display: none;
+  }
 }

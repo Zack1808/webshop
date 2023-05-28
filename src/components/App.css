@@ -15,10 +15,13 @@
 :root {
   --bg-color: hsl(0 0% 90%);
   --txt-color: hsl(0 0% 10%);
-  --container-color: hsl(0 0% 80%);
+  --container-color: hsl(0 0% 85%);
   --btn-bg: hsl(0 0% 10%);
-  --navbar-bg: hsl(0 0% 85%);
+  --navbar-bg: hsl(0 0% 87%);
   --slider-button: hsl(0 0% 10%);
+  --logo-size: 4.5rem;
+  --title-size: 2.5rem;
+  --txt-size: 1.2rem;
 }
 
 .app-container {

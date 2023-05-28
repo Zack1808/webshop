@@ -11,11 +11,13 @@ import "./Navbar.css";
 const Navbar = () => {
   return (
     <div className="navbar-container">
-      <div className="logo">
-        <VideogameAssetIcon sx={{ fontSize: "5rem" }} />
-        <h1>GamerTech</h1>
+      <div className="container">
+        <div className="logo">
+          <VideogameAssetIcon sx={{ fontSize: "var(--logo-size)" }} />
+          <h1>GamerTech</h1>
+        </div>
+        <ToggleButton />
       </div>
-      <ToggleButton />
     </div>
   );
 };
