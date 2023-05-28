@@ -1,0 +1,22 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* outline: 1px solid lime !important; */
+}
+
+:root {
+  --bg-color: hsl(0 0% 90%);
+  --txt-color: hsl(0 0% 10%);
+  --container-color: hsl(0 0% 80%);
+  --btn-bg: hsl(0 0% 10%);
+  --navbar-bg: hsl(0 0% 90%);
+}
+
+.app-container {
+  background-color: var(--bg-color);
+  min-height: 100vh;
+  width: 100%;
+}
