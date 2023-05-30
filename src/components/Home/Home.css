@@ -1,0 +1,8 @@
+/* Styling the Home component */
+.home-container {
+  width: 95%;
+  max-width: 1500px;
+  margin-top: 2em;
+  display: grid;
+  grid-template-columns: repeat(auto, minmax(7em, 1fr));
+}
