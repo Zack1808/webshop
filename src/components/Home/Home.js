@@ -3,6 +3,9 @@ import React from "react";
 // Importing the context
 import { useCategory } from "../../context/categoryContext";
 
+// Importing the costume components
+import Loader from "../Loader/Loader";
+
 // Importing the style file
 import "./Home.css";
 
@@ -13,7 +16,7 @@ const Home = () => {
 
   return (
     <div className="home-container">
-      {categories.length === 0 ? null : null}
+      {categories.length === 0 ? <Loader /> : null}
     </div>
   );
 };
