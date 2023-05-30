@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 
 // Creating the context
 const ThemeContext = React.createContext();
@@ -22,6 +22,16 @@ export const ThemeProvider = ({ children }) => {
   const toggle = () => {
     setDark((prevState) => !prevState);
   };
+
+  // Pulling the saved theme mode from local storage
+  useEffect(() => {
+    setDark(JSON.parse(localStorage.getItem("jpn-webshop-dark-mode")));
+  }, []);
+
+  // Setting the current theme mode into local storage
+  useEffect(() => {
+    localStorage.setItem("jpn-webshop-dark-mode", JSON.stringify(dark));
+  }, [dark]);
 
   // Returning the context
   return (
