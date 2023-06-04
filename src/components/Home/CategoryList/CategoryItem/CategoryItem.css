@@ -1,0 +1,45 @@
+/* Styling the CategoryItem */
+.category-item-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding-block: 1em 2em;
+  background-color: var(--container-color);
+  transition: 0.3s ease-in-out;
+  border: 2px solid var(--bg-color);
+}
+
+.category-item-container img {
+  width: 100%;
+  aspect-ratio: 16/10;
+  object-fit: contain;
+}
+
+.category-item-container h2 {
+  color: var(--txt-color);
+  transition: 0.3s ease-in-out;
+}
+
+.category-item-container button {
+  border: none;
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  font-size: var(--txt-size);
+  padding: 0.7em 1.5em;
+  font-weight: 700;
+  transition: 0.3s ease-in-out;
+  clip-path: polygon(
+    1em 0,
+    100% 0,
+    100% calc(100% - 1em),
+    calc(100% - 1em) 100%,
+    0 100%,
+    0% 1em
+  );
+}
+
+.category-item-container button:hover {
+  scale: 1.1;
+}

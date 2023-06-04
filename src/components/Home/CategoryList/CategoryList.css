@@ -1,11 +1,22 @@
 /* Styling the CategoryList component */
 .category-list-container {
-  --item-width: 250px;
+  --item-width: 325px;
   width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(var(--item-width), 1fr));
   container-type: inline-size;
   container-name: categoryList;
+}
+
+.category-list-container:has(.category-item-container:hover)
+  .category-item-container:not(:hover) {
+  transform: scale(0.97);
+}
+
+.category-list-container:has(.category-item-container:hover)
+  .category-item-container:not(:hover)
+  button {
+  opacity: 0;
 }
 
 @container categoryList (width < 500px) {
