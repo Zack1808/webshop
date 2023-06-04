@@ -20,8 +20,10 @@ const App = () => {
   return (
     <CategoryProvider>
       <div className={`app-container ${dark ? "dark" : ""}`}>
-        <Navbar />
-        <SearchBar />
+        <div className="navigation">
+          <Navbar />
+          <SearchBar />
+        </div>
         <Home />
       </div>
     </CategoryProvider>
