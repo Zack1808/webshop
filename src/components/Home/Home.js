@@ -5,6 +5,7 @@ import { useCategory } from "../../context/categoryContext";
 
 // Importing the costume components
 import Loader from "../Loader/Loader";
+import CategoryList from "./CategoryList/CategoryList";
 
 // Importing the style file
 import "./Home.css";
@@ -16,7 +17,7 @@ const Home = () => {
 
   return (
     <div className="home-container">
-      {categories.length === 0 ? <Loader /> : null}
+      {categories.length === 0 ? <Loader /> : <CategoryList />}
     </div>
   );
 };

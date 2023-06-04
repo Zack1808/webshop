@@ -1,0 +1,15 @@
+/* Styling the CategoryList component */
+.category-list-container {
+  --item-width: 250px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--item-width), 1fr));
+  container-type: inline-size;
+  container-name: categoryList;
+}
+
+@container categoryList (width < 500px) {
+  .category-list-container {
+    --item-width: 100%;
+  }
+}

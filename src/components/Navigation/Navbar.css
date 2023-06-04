@@ -21,6 +21,7 @@
   justify-content: space-between;
   align-items: center;
   container-type: inline-size;
+  container-name: navigation;
 }
 
 /* Styling the logo */
@@ -40,7 +41,7 @@
 }
 
 /*  */
-@container (width < 400px) {
+@container navigation (width < 400px) {
   .logo h1 {
     display: none;
   }
