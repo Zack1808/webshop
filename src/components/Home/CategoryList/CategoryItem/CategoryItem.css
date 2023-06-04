@@ -9,6 +9,23 @@
   background-color: var(--container-color);
   transition: 0.3s ease-in-out;
   border: 2px solid var(--bg-color);
+  clip-path: polygon(
+    1.5em 0%,
+    calc(100% - 1.5em) 0%,
+    100% 1.5em,
+    100% calc(100% - 1.5em),
+    calc(100% - 1.5em) 100%,
+    1.5em 100%,
+    0% calc(100% - 1.5em),
+    0% 1.5em
+  );
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.visible {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .category-item-container img {
@@ -38,8 +55,4 @@
     0 100%,
     0% 1em
   );
-}
-
-.category-item-container button:hover {
-  scale: 1.1;
 }

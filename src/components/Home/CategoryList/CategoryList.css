@@ -8,19 +8,22 @@
   container-name: categoryList;
 }
 
-.category-list-container:has(.category-item-container:hover)
-  .category-item-container:not(:hover) {
-  transform: scale(0.97);
-}
-
-.category-list-container:has(.category-item-container:hover)
-  .category-item-container:not(:hover)
-  button {
-  opacity: 0;
-}
-
 @container categoryList (width < 500px) {
   .category-list-container {
     --item-width: 100%;
+  }
+}
+
+@container categoryList (width > 500px) {
+  .category-list-container:has(.category-item-container:hover)
+    .category-item-container:not(:hover) {
+    transform: scale(0.97);
+  }
+
+  .category-list-container:has(.category-item-container:hover)
+    .category-item-container:not(:hover)
+    button {
+    opacity: 0;
+    transform: translateY(10px);
   }
 }
