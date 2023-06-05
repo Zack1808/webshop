@@ -20,7 +20,7 @@
     0% 1.5em
   );
   opacity: 0;
-  transform: scale(0.8);
+  transform: scale(0.95);
 }
 
 .visible {
@@ -37,22 +37,4 @@
 .category-item-container h2 {
   color: var(--txt-color);
   transition: 0.3s ease-in-out;
-}
-
-.category-item-container button {
-  border: none;
-  background-color: var(--btn-bg);
-  color: var(--btn-text);
-  font-size: var(--txt-size);
-  padding: 0.7em 1.5em;
-  font-weight: 700;
-  transition: 0.3s ease-in-out;
-  clip-path: polygon(
-    1em 0,
-    100% 0,
-    100% calc(100% - 1em),
-    calc(100% - 1em) 100%,
-    0 100%,
-    0% 1em
-  );
 }

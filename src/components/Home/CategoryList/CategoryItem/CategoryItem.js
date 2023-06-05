@@ -1,6 +1,9 @@
 import React from "react";
 import { useInView } from "react-intersection-observer";
 
+// Importing the costume components
+import Button from "../../../Button/Button";
+
 // Importing the style file
 import "./CategoryItem.css";
 
@@ -16,7 +19,7 @@ const CategoryItem = ({ category }) => {
     >
       <img src={category.assets[0].url} alt="" />
       <h2>{category.name}</h2>
-      <button>Check it out</button>
+      <Button text="Check it out" />
     </div>
   );
 };

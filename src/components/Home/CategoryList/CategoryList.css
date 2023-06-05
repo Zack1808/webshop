@@ -1,11 +1,13 @@
 /* Styling the CategoryList component */
 .category-list-container {
   --item-width: 325px;
-  width: 100%;
+  width: 95%;
+  max-width: 1500px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(var(--item-width), 1fr));
   container-type: inline-size;
   container-name: categoryList;
+  padding-bottom: 2.5em;
 }
 
 @container categoryList (width < 500px) {
@@ -22,7 +24,7 @@
 
   .category-list-container:has(.category-item-container:hover)
     .category-item-container:not(:hover)
-    button {
+    .btn {
     opacity: 0;
     transform: translateY(10px);
   }

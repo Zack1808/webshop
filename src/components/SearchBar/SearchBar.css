@@ -4,6 +4,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background: var(--bg-color);
+  transition: 0.3s ease-in-out;
 }
 
 .search-bar-container form {
