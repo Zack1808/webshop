@@ -10,13 +10,13 @@
   padding-bottom: 2.5em;
 }
 
-@container categoryList (width < 500px) {
+@container categoryList (width <= 400px) {
   .category-list-container {
     --item-width: 100%;
   }
 }
 
-@container categoryList (width > 500px) {
+@container categoryList (width > 400px) {
   .category-list-container:has(.category-item-container:hover)
     .category-item-container:not(:hover) {
     transform: scale(0.97);
