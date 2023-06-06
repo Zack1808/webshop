@@ -1,4 +1,5 @@
 import React from "react";
+import { ToastContainer } from "react-toastify";
 
 // Importing the costume components
 import Navbar from "./Navigation/Navbar";
@@ -23,6 +24,7 @@ const App = () => {
         <div className="navigation">
           <Navbar />
           <SearchBar />
+          <ToastContainer style={{ marginTop: "8em" }} />
         </div>
         <Home />
       </div>

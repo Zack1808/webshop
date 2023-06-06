@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import eamiljs from "@emailjs/browser";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 // Importing context
@@ -35,7 +35,7 @@ const Newsteller = () => {
       .then(
         (result) => {
           toast.success("Message sent", {
-            position: "bottom-center",
+            position: "top-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -46,7 +46,7 @@ const Newsteller = () => {
         },
         (error) => {
           toast.error(error, {
-            position: "bottom-center",
+            position: "top-center",
             autoClose: false,
             hideProgressBar: false,
             closeOnClick: true,
@@ -72,7 +72,6 @@ const Newsteller = () => {
           <textarea name="message" placeholder="Message"></textarea>
         </div>
         <Button type="submit" text="Send request" />
-        <ToastContainer />
       </form>
     </div>
   );
