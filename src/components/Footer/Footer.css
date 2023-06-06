@@ -1,0 +1,14 @@
+/* Styling the Footer component */
+.footer-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--navbar-bg);
+  padding-block: 2em;
+  z-index: 2;
+  font-size: var(--txt-size);
+  color: var(--txt-color);
+  font-weight: 700;
+  transition: 0.3s ease-in-out;
+}

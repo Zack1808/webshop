@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import eamiljs from "@emailjs/browser";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { UilGithub, UilLinkedin } from "@iconscout/react-unicons";
 
 // Importing context
 import { useTheme } from "../../../context/themeContext";
@@ -73,6 +74,18 @@ const Newsteller = () => {
         </div>
         <Button type="submit" text="Send request" />
       </form>
+      <div className="social-links">
+        <a href="https://github.com/Zack1808" target="_blank" rel="noreferrer">
+          <UilGithub />
+        </a>
+        <a
+          href="https://www.linkedin.com/in/jean-pierre-novak-2425a7218/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <UilLinkedin />
+        </a>
+      </div>
     </div>
   );
 };

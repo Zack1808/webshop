@@ -4,6 +4,7 @@ import { ToastContainer } from "react-toastify";
 // Importing the costume components
 import Navbar from "./Navigation/Navbar";
 import SearchBar from "./SearchBar/Searchbar";
+import Footer from "./Footer/Footer";
 import Home from "./Home/Home";
 
 // Importing the contexts
@@ -27,6 +28,7 @@ const App = () => {
           <ToastContainer style={{ marginTop: "8em" }} />
         </div>
         <Home />
+        <Footer />
       </div>
     </CategoryProvider>
   );

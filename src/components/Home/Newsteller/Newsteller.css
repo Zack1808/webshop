@@ -95,6 +95,23 @@
   color: transparent;
 }
 
+.social-links {
+  width: 95%;
+  max-width: 1500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5em;
+  margin-top: 2.5em;
+}
+
+.social-links a {
+  color: var(--txt-color);
+  border-radius: 50%;
+  transform: scale(3);
+  transition: 0.3s ease-in-out;
+}
+
 @container newstellerForm (width < 400px) {
   .form-inputs {
     grid-template-columns: 1fr;
