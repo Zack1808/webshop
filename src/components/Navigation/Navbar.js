@@ -1,5 +1,6 @@
 import React from "react";
 import VideogameAssetIcon from "@mui/icons-material/VideogameAsset";
+import { Link } from "react-router-dom";
 
 // Importing the costume components
 import ToggleButton from "./ToggleButton/ToggleButton";
@@ -12,10 +13,10 @@ const Navbar = () => {
   return (
     <div className="navbar-container">
       <div className="container">
-        <div className="logo">
+        <Link to="/" className="logo">
           <VideogameAssetIcon sx={{ fontSize: "var(--logo-size)" }} />
           <h1>GamerTech</h1>
-        </div>
+        </Link>
         <ToggleButton />
       </div>
     </div>

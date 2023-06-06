@@ -15,7 +15,7 @@
 
 /* Styling the container  */
 .container {
-  width: 100%;
+  width: 90%;
   max-width: 1500px;
   display: flex;
   justify-content: space-between;
@@ -33,6 +33,7 @@
   gap: 0.5em;
   user-select: none;
   transition: 0.3s ease-in-out;
+  text-decoration: none;
 }
 
 .logo h1 {

@@ -1,7 +1,7 @@
 /* Styling the CategoryList component */
 .category-list-container {
   --item-width: 325px;
-  width: 95%;
+  width: 90%;
   max-width: 1500px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(var(--item-width), 1fr));

@@ -34,14 +34,14 @@
 .newsteller-container h1 {
   font-size: var(--title-size);
   color: var(--txt-color);
-  width: 95%;
+  width: 90%;
   max-width: 1500px;
   margin-bottom: 1em;
   transition: 0.3s ease-in-out;
 }
 
 .newsteller-container form {
-  width: 95%;
+  width: 90%;
   max-width: 1500px;
   z-index: 1;
   display: flex;
@@ -96,7 +96,7 @@
 }
 
 .social-links {
-  width: 95%;
+  width: 90%;
   max-width: 1500px;
   display: flex;
   justify-content: center;

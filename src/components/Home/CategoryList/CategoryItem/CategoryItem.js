@@ -19,7 +19,11 @@ const CategoryItem = ({ category }) => {
     >
       <img src={category.assets[0].url} alt="" />
       <h2>{category.name}</h2>
-      <Button text="Check it out" />
+      <Button
+        type="page-link"
+        link={`/category/${category.slug}`}
+        text="Check it out"
+      />
     </div>
   );
 };
