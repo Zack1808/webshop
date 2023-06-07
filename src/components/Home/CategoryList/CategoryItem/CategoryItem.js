@@ -21,7 +21,7 @@ const CategoryItem = ({ category }) => {
       <h2>{category.name}</h2>
       <Button
         type="page-link"
-        link={`/category/${category.slug}`}
+        link={`/category/${category.slug}&${category.id}`}
         text="Check it out"
       />
     </div>

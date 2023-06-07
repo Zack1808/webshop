@@ -11,6 +11,7 @@ import Home from "./Home/Home";
 // Importing the contexts
 import { useTheme } from "../context/themeContext";
 import { CategoryProvider } from "../context/categoryContext";
+import { ProductsProvider } from "../context/productsContext";
 
 // Importing the style file
 import "./App.css";
@@ -21,21 +22,23 @@ const App = () => {
   const dark = useTheme();
 
   return (
-    <CategoryProvider>
-      <BrowserRouter basename={process.env.PUBLIC_URL}>
-        <div className={`app-container ${dark ? "dark" : ""}`}>
-          <div className="navigation">
-            <Navbar />
-            <SearchBar />
-            <ToastContainer style={{ marginTop: "8em" }} />
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <CategoryProvider>
+        <ProductsProvider>
+          <div className={`app-container ${dark ? "dark" : ""}`}>
+            <div className="navigation">
+              <Navbar />
+              <SearchBar />
+              <ToastContainer style={{ marginTop: "8em" }} />
+            </div>
+            <Routes>
+              <Route exact path="/" element={<Home />} />
+            </Routes>
+            <Footer />
           </div>
-          <Routes>
-            <Route exact path="/" element={<Home />} />
-          </Routes>
-          <Footer />
-        </div>
-      </BrowserRouter>
-    </CategoryProvider>
+        </ProductsProvider>
+      </CategoryProvider>
+    </BrowserRouter>
   );
 };
 
