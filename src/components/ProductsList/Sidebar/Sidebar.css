@@ -26,3 +26,9 @@
   opacity: 1;
   transform: scale(1);
 }
+
+@media (width < 650px) {
+  .sidebar-container {
+    width: 100%;
+  }
+}

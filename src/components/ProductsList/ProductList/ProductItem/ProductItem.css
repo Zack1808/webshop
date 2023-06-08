@@ -19,12 +19,30 @@
     0% calc(100% - 1.5em),
     0% 1.5em
   );
-  /* opacity: 0;
-  transform: scale(0.95); */
+  padding: 0.7em 0.7em 2em;
+  color: var(--txt-color);
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.product-item-container.visible {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .product-item-container img {
   width: 100%;
   aspect-ratio: 16/10;
   object-fit: contain;
+}
+
+.price-tag,
+.buttons {
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+}
+
+.buttons {
+  width: 90%;
 }
