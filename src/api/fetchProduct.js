@@ -4,6 +4,7 @@ import { commerce } from "./commerceInit";
 export const fetchProduct = async (setProducts, id) => {
   const { data } = await commerce.products.list({
     category_id: id,
+    limit: 50,
   });
   setProducts(data);
 };
