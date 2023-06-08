@@ -24,6 +24,7 @@ const Home = () => {
         <>
           <CategoryList />
           <Newsteller />
+          {console.log(categories)}
         </>
       )}
     </div>

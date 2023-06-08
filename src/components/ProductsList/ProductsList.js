@@ -8,6 +8,7 @@ import { useProducts } from "../../context/productsContext";
 
 // Importing the style file
 import "./ProductsList.css";
+import Sidebar from "./Sidebar/Sidebar";
 
 // Creating the ProjectsList component
 const ProductsList = () => {
@@ -16,7 +17,13 @@ const ProductsList = () => {
 
   return (
     <div className="projects-list-container">
-      {products.length === 0 ? <Loader /> : <>{/* <Loader /> */}</>}
+      {products.length === 0 ? (
+        <Loader />
+      ) : (
+        <>
+          <Sidebar />
+        </>
+      )}
     </div>
   );
 };

@@ -1,0 +1,28 @@
+/* Styling the Sidebar */
+.sidebar-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0.5em;
+  color: var(--txt-color);
+  background-color: var(--container-color);
+  padding: 2.5em 1.5em;
+  clip-path: polygon(
+    1.5em 0%,
+    calc(100% - 1.5em) 0%,
+    100% 1.5em,
+    100% calc(100% - 1.5em),
+    calc(100% - 1.5em) 100%,
+    1.5em 100%,
+    0% calc(100% - 1.5em),
+    0% 1.5em
+  );
+  transform: scale(0.8);
+  opacity: 0;
+  transition: 0.3s ease-in-out;
+}
+
+.sidebar-container.visible {
+  opacity: 1;
+  transform: scale(1);
+}
