@@ -1,0 +1,8 @@
+/* Styling the ProductList component */
+.product-list-container {
+  --item-width: 250px;
+  flex-grow: 1;
+  display: grid;
+  gap: 0.5em;
+  grid-template-columns: repeat(auto-fit, minmax(var(--item-width), 400px));
+}

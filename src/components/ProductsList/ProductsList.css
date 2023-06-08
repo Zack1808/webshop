@@ -1,6 +1,9 @@
 /* Styling the ProjectsList */
-.projects-list-container {
+.products-list-container {
   display: flex;
-  justify-content: space-between;
   align-items: flex-start;
+  width: 90%;
+  max-width: 1500px;
+  gap: 1em;
+  margin-block: 1em;
 }
