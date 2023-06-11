@@ -15,7 +15,7 @@ const ProductItem = ({ product }) => {
   return (
     <div
       ref={ref}
-      className={`product-item-container ${inView ? "visible" : ""}`}
+      className={`product-item-container ${inView ? "visible" : "  "}`}
     >
       <img src={product.image.url} alt="" />
       <h2>{product.name}</h2>

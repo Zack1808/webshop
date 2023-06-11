@@ -1,4 +1,12 @@
 /* Styling the Sidebar */
+.sidebar {
+  position: sticky;
+  top: var(--top);
+  background-color: var(--bg-color);
+  padding-block: 1em;
+  z-index: 1;
+  transition: 0.3s ease-in-out;
+}
 .sidebar-container {
   display: flex;
   flex-direction: column;
@@ -28,6 +36,9 @@
 }
 
 @media (width < 650px) {
+  .sidebar {
+    width: 100%;
+  }
   .sidebar-container {
     width: 100%;
   }

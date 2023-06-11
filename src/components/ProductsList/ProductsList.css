@@ -5,12 +5,12 @@
   width: 90%;
   max-width: 1500px;
   gap: 1em;
-  margin-block: 1em;
 }
 
 @media (width < 650px) {
   .products-list-container {
     --txt-size: 0.8em;
     flex-direction: column;
+    gap: 0;
   }
 }
