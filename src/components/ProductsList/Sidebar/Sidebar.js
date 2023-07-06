@@ -7,6 +7,7 @@ import Checkbox from "./Checkbox/Checkbox";
 
 // Importing the context
 import { useCategory } from "../../../context/categoryContext";
+import { useSubCategory } from "../../../context/subCategoryContext";
 
 // Importing the style file
 import "./Sidebar.css";
@@ -24,6 +25,7 @@ const Sidebar = () => {
 
   // Setting up the context
   const categories = useCategory();
+  const selectedCategories = useSubCategory();
 
   // Setting up the location
   const location = useLocation();
@@ -58,14 +60,18 @@ const Sidebar = () => {
             categories.map((category) => {
               if (category.id === id)
                 return category.children.map((child) => (
-                  <Checkbox label={child.name} />
+                  <Checkbox
+                    key={child.id}
+                    label={child.name}
+                    slug={child.slug}
+                  />
                 ));
               else return null;
             })}
-          {console.log(id)}
         </form>
         <h3>Sort by price</h3>
       </div>
+      {console.log(selectedCategories)}
     </div>
   );
 };

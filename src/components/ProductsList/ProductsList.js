@@ -7,6 +7,7 @@ import ProductList from "./ProductList/ProductList";
 
 // Importing the context
 import { useProducts } from "../../context/productsContext";
+import { SubCategoryProvider } from "../../context/subCategoryContext";
 
 // Importing the style file
 import "./ProductsList.css";
@@ -21,10 +22,10 @@ const ProductsList = () => {
       {products.length === 0 ? (
         <Loader />
       ) : (
-        <>
+        <SubCategoryProvider>
           <Sidebar />
           <ProductList />
-        </>
+        </SubCategoryProvider>
       )}
     </div>
   );
