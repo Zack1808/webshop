@@ -25,11 +25,11 @@ const ProductItem = ({ product }) => {
       </div>
       <div className="buttons">
         <Button
-          text="Check out"
+          text="Read more"
           type="page-link"
           link={`/product/${product.id}`}
         />
-        <Button text="Check out" />
+        {product.inventory.available > 0 && <Button text="Add to cart" />}
       </div>
     </div>
   );
