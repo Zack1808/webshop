@@ -30,6 +30,25 @@
   transition: 0.3s ease-in-out;
 }
 
+.sidebar-container h3,
+.sidebar-container h2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+h3 span,
+h2 span {
+  display: none;
+}
+
+.forms {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .sidebar-container.visible {
   opacity: 1;
   transform: scale(1);
@@ -38,8 +57,30 @@
 @media (width < 650px) {
   .sidebar {
     width: 100%;
+    position: static;
   }
   .sidebar-container {
     width: 100%;
+  }
+  .checks,
+  .radios,
+  .forms {
+    display: none;
+  }
+
+  h3 span,
+  h2 span {
+    display: block;
+  }
+
+  h3 span.active,
+  h2 span.active {
+    transform: rotate(180deg);
+  }
+
+  .checks.active,
+  .radios.active,
+  .forms.active {
+    display: block;
   }
 }
