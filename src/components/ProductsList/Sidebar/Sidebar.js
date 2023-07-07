@@ -4,9 +4,11 @@ import { useLocation } from "react-router-dom";
 
 // Importing the costume components
 import Checkbox from "./Checkbox/Checkbox";
+import RadioButton from "./RadionButton/RadioButton";
 
 // Importing the context
 import { useCategory } from "../../../context/categoryContext";
+import { useSort } from "../../../context/productsContext";
 
 // Importing the style file
 import "./Sidebar.css";
@@ -15,6 +17,7 @@ import "./Sidebar.css";
 const Sidebar = () => {
   // Setting up state
   const [id, setId] = useState("");
+  const [active, setActive] = useState(true);
 
   // Creating the intersection observer reference
   const [ref, inView] = useInView();
@@ -24,6 +27,7 @@ const Sidebar = () => {
 
   // Setting up the context
   const categories = useCategory();
+  const sort = useSort();
 
   // Setting up the location
   const location = useLocation();
@@ -41,6 +45,22 @@ const Sidebar = () => {
 
     // eslint-disable-next-line
   }, []);
+
+  // The function taht will handle the radio switch
+  const updateChecked = (type) => {
+    switch (type) {
+      case "asc":
+        setActive(true);
+        sort(true);
+        break;
+      case "desc":
+        setActive(false);
+        sort(false);
+        break;
+      default:
+        break;
+    }
+  };
 
   return (
     <div
@@ -67,7 +87,21 @@ const Sidebar = () => {
               else return null;
             })}
         </form>
-        <h3>Sort by price</h3>
+        <form>
+          <h3>Sort by price</h3>
+          <RadioButton
+            name="asc"
+            label="Sort from lowest to highest"
+            active={active}
+            updateChecked={updateChecked}
+          />
+          <RadioButton
+            name="desc"
+            label="Sort from highest to lowest"
+            active={!active}
+            updateChecked={updateChecked}
+          />
+        </form>
       </div>
     </div>
   );

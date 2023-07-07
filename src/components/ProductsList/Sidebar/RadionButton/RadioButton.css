@@ -1,21 +1,26 @@
-/* Styling the Checkbox component */
-.checkbox-container {
+/* Styling the RadioButton component */
+.radio-container {
   display: flex;
   gap: 10px;
   padding: 0.5em 0;
   align-items: center;
 }
 
-.checkbox {
+.radio {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 25px;
+  width: 20px;
   aspect-ratio: 1/1;
+  border-radius: 50%;
   background-color: var(--bg-color);
-  transition: background-color 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 
-.checkbox-container input {
+.radio.active {
+  background-color: var(--txt-color);
+}
+
+.radio-container input {
   display: none;
 }

@@ -6,10 +6,15 @@ import { fetchProduct } from "../api/fetchProduct";
 
 // Creating the context
 const ProductsContext = React.createContext();
+const sortProductContext = React.createContext();
 
 // Exporting the hooks for accessing the context
 export const useProducts = () => {
   return useContext(ProductsContext);
+};
+
+export const useSort = () => {
+  return useContext(sortProductContext);
 };
 
 // Creating the context provider
@@ -30,14 +35,29 @@ export const ProductsProvider = ({ children }) => {
         location.pathname.length
       );
 
-      fetchProduct(setProducts, id);
+      fetchProduct(setProducts, id, sort);
     }
   }, [location]);
+
+  // Function that will sort the products
+  const sort = (asc) => {
+    asc
+      ? setProducts((prevState) => {
+          prevState.sort((a, b) => (a.price.raw > b.price.raw ? 1 : -1));
+          return [...prevState];
+        })
+      : setProducts((prevState) => {
+          prevState.sort((a, b) => (a.price.raw < b.price.raw ? 1 : -1));
+          return [...prevState];
+        });
+  };
 
   // Returning the context
   return (
     <ProductsContext.Provider value={products}>
-      {children}
+      <sortProductContext.Provider value={sort}>
+        {children}
+      </sortProductContext.Provider>
     </ProductsContext.Provider>
   );
 };
