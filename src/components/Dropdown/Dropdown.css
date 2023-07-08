@@ -1,0 +1,64 @@
+/* Styling the Dropdown component */
+.dropdown-container {
+  width: 100%;
+  color: var(--txt-color);
+
+  text-transform: capitalize;
+  position: relative;
+}
+
+.dropdown-selected {
+  width: 100%;
+  font-weight: 700;
+  display: flex;
+  transition: 0.3s ease-in-out;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em 1.5em;
+  cursor: pointer;
+  clip-path: polygon(
+    0.7em 0%,
+    calc(100% - 0.7em) 0%,
+    100% 0.7em,
+    100% 100%,
+    0 100%,
+    0% 0.7em
+  );
+  background-color: var(--container-color);
+  border-bottom: 3px solid var(--btn-bg);
+}
+
+span.active {
+  transform: rotate(180deg);
+}
+
+.dropdown-items {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  font-size: var(--txt-size);
+  background-color: var(--container-color);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: 0.3s ease-in-out;
+}
+
+.dropdown-items.active {
+  transform: scaleY(1);
+}
+
+.dropdown-item {
+  text-decoration: none;
+  padding: 1em 1.5em;
+  border-bottom: 2px solid var(--bg-color);
+  color: var(--txt-color);
+  opacity: 0;
+}
+
+.dropdown-items.active .dropdown-item {
+  opacity: 1;
+}

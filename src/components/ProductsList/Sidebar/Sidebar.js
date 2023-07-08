@@ -6,6 +6,7 @@ import { UilAngleDown } from "@iconscout/react-unicons";
 // Importing the costume components
 import Checkbox from "./Checkbox/Checkbox";
 import RadioButton from "./RadionButton/RadioButton";
+import Dropdown from "../../Dropdown/Dropdown";
 
 // Importing the context
 import { useCategory } from "../../../context/categoryContext";
@@ -75,6 +76,7 @@ const Sidebar = () => {
           sideRef.current && `${sideRef.current.getBoundingClientRect().y}px`,
       }}
     >
+      <Dropdown links items={categories} />
       <div ref={ref} className={`sidebar-container ${inView ? "visible" : ""}`}>
         <h2 onClick={() => setForm((prevState) => !prevState)}>
           Filters{" "}
