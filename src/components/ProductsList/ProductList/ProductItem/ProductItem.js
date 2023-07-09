@@ -4,6 +4,9 @@ import { useInView } from "react-intersection-observer";
 // Importing costume components
 import Button from "../../../Button/Button";
 
+// Importing the context
+import { useUpdateCart } from "../../../../context/cartContext";
+
 // Importing the style file
 import "./ProductItem.css";
 
@@ -11,6 +14,14 @@ import "./ProductItem.css";
 const ProductItem = ({ product }) => {
   // Setting up the intersection observer
   const [ref, inView] = useInView();
+
+  // Setting up the context
+  const update = useUpdateCart();
+
+  // Function that will add the item to the cart
+  const addItem = () => {
+    update("ADD", product.id);
+  };
 
   return (
     <div
@@ -29,7 +40,9 @@ const ProductItem = ({ product }) => {
           type="page-link"
           link={`/product/${product.id}`}
         />
-        {product.inventory.available > 0 && <Button text="Add to cart" />}
+        {product.inventory.available > 0 && (
+          <Button text="Add to cart" click={addItem} />
+        )}
       </div>
     </div>
   );

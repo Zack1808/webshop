@@ -6,6 +6,9 @@ import { UilShoppingCart } from "@iconscout/react-unicons";
 // Importing the costume components
 import ToggleButton from "./ToggleButton/ToggleButton";
 
+// Importing the context
+import { useCart } from "../../context/cartContext";
+
 // Importing the style file
 import "./Navbar.css";
 import Badge from "./Badge/Badge";
@@ -14,6 +17,9 @@ import Badge from "./Badge/Badge";
 const Navbar = () => {
   // Setting up the location hook
   const location = useLocation();
+
+  // Setting up the context
+  const cart = useCart();
 
   return (
     <div className="navbar-container">
@@ -26,7 +32,10 @@ const Navbar = () => {
           <ToggleButton />
           {location && location.pathname !== "/cart" ? (
             <Link to="/cart">
-              <Badge icon={<UilShoppingCart />} count={1} />
+              <Badge
+                icon={<UilShoppingCart />}
+                count={cart && cart.total_items}
+              />
             </Link>
           ) : null}
         </div>

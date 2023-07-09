@@ -13,6 +13,7 @@ import ProductsList from "./ProductsList/ProductsList";
 import { useTheme } from "../context/themeContext";
 import { CategoryProvider } from "../context/categoryContext";
 import { ProductsProvider } from "../context/productsContext";
+import { CartProvider } from "../context/cartContext";
 
 // Importing the style file
 import "./App.css";
@@ -26,18 +27,20 @@ const App = () => {
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <CategoryProvider>
         <ProductsProvider>
-          <div className={`app-container ${dark ? "dark" : ""}`}>
-            <div className="navigation">
-              <Navbar />
-              <SearchBar />
-              <ToastContainer style={{ marginTop: "8em" }} />
+          <CartProvider>
+            <div className={`app-container ${dark ? "dark" : ""}`}>
+              <div className="navigation">
+                <Navbar />
+                <SearchBar />
+                <ToastContainer style={{ marginTop: "8em" }} />
+              </div>
+              <Routes>
+                <Route exact path="/" element={<Home />} />
+                <Route exact path="/category/:id" element={<ProductsList />} />
+              </Routes>
+              <Footer />
             </div>
-            <Routes>
-              <Route exact path="/" element={<Home />} />
-              <Route exact path="/category/:id" element={<ProductsList />} />
-            </Routes>
-            <Footer />
-          </div>
+          </CartProvider>
         </ProductsProvider>
       </CategoryProvider>
     </BrowserRouter>

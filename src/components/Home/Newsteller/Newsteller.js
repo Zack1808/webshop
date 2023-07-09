@@ -4,9 +4,6 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { UilGithub, UilLinkedin } from "@iconscout/react-unicons";
 
-// Importing context
-import { useTheme } from "../../../context/themeContext";
-
 // Importing the costume components
 import Input from "../../Input/Input";
 import Button from "../../Button/Button";
@@ -18,9 +15,6 @@ import "./Newsteller.css";
 const Newsteller = () => {
   // Setting up the refs
   const formRef = useRef();
-
-  // Setting up the context
-  const dark = useTheme();
 
   // Function that will handle the submition of the form
   const handleEmail = (e) => {
@@ -42,7 +36,7 @@ const Newsteller = () => {
             closeOnClick: true,
             draggable: true,
             progress: undefined,
-            theme: dark ? "dark" : "light",
+            theme: "dark",
           });
         },
         (error) => {
@@ -53,7 +47,7 @@ const Newsteller = () => {
             closeOnClick: true,
             draggable: true,
             progress: undefined,
-            theme: dark ? "dark" : "light",
+            theme: "dark",
           });
         }
       );
