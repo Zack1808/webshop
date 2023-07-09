@@ -76,7 +76,9 @@ h2 span {
 
   h3 span,
   h2 span {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   h3 span.active,

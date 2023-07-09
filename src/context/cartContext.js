@@ -1,12 +1,10 @@
 import React, { useState, useContext, useEffect } from "react";
 
 // Importing the fetching functions
-import {
-  fetchCart,
-  fetchAddingCart,
-  fetchRemovingCart,
-  fetchClearCart,
-} from "../api/fetchCart";
+import { fetchCart } from "../api/fetchCart";
+
+// Importing the reducer
+import { cartReducer } from "../reducers/cartReducer";
 
 // Creating the context
 const CartContext = React.createContext();
@@ -35,19 +33,7 @@ export const CartProvider = ({ children }) => {
 
   // Function that will handle the updates
   const updateCart = (update, id = "id") => {
-    switch (update) {
-      case "ADD":
-        fetchAddingCart(id, setCart);
-        break;
-      case "REMOVE":
-        fetchRemovingCart(id, setCart);
-        break;
-      case "CLEAR":
-        fetchClearCart(setCart);
-        break;
-      default:
-        break;
-    }
+    cartReducer(update, id, setCart);
   };
 
   return (

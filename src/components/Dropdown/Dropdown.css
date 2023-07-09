@@ -28,6 +28,12 @@
   border-bottom: 3px solid var(--btn-bg);
 }
 
+.dropdown-selected span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 span.active {
   transform: rotate(180deg);
 }
