@@ -17,3 +17,7 @@
     0% 1em
   );
 }
+
+.btn:hover {
+  opacity: 0.7;
+}
