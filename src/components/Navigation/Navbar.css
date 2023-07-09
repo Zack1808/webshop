@@ -41,7 +41,23 @@
   font-size: var(--title-size);
 }
 
-/*  */
+.btns {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.btns a {
+  color: var(--txt-color);
+  transition: 0.3s ease-in-out;
+  text-align: center;
+  transform: scale(1.3);
+  padding: 0.7em 0.4em 0.4em;
+  text-decoration: none;
+}
+
+/* Styling the nav for smaller screen sizes */
 @container navigation (width < 400px) {
   .logo h1 {
     display: none;
