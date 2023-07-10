@@ -8,6 +8,7 @@ import SearchBar from "./SearchBar/Searchbar";
 import Footer from "./Footer/Footer";
 import Home from "./Home/Home";
 import ProductsList from "./ProductsList/ProductsList";
+import Cart from "./Cart/Cart";
 
 // Importing the contexts
 import { useTheme } from "../context/themeContext";
@@ -37,6 +38,7 @@ const App = () => {
               <Routes>
                 <Route exact path="/" element={<Home />} />
                 <Route exact path="/category/:id" element={<ProductsList />} />
+                <Route exact path="/cart" element={<Cart />} />
               </Routes>
               <Footer />
             </div>
