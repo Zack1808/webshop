@@ -1,0 +1,25 @@
+/* Styling the Sidebar components */
+.sidebar-container hr {
+  background-color: transparent;
+  border: 1px solid var(--txt-color);
+  transition: 0.3s ease-in-out;
+}
+
+.price-summary h3 {
+  margin: 0;
+}
+
+.price-summary {
+  display: flex;
+  padding: 1em 0;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.buttons {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}

@@ -20,7 +20,7 @@ const CartItem = ({ item }) => {
 
   // Function that will remove item from the cart
   const remove = () => {
-    update("REMOVE", item.product_id);
+    update("REMOVE", item.id);
   };
 
   return (
@@ -30,6 +30,10 @@ const CartItem = ({ item }) => {
       <div className="item-price">
         <h4>Price:</h4>
         <p>{item.price.formatted_with_symbol}</p>
+      </div>
+      <div className="item-amount">
+        <h4>Amount:</h4>
+        <p>{item.quantity}</p>
       </div>
       <Button text="Remove from cart" click={remove} />
     </div>

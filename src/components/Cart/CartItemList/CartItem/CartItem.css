@@ -36,7 +36,8 @@
   object-fit: contain;
 }
 
-.item-price {
+.item-price,
+.item-amount {
   display: flex;
   width: 80%;
   justify-content: space-between;

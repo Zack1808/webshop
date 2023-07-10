@@ -1,8 +1,25 @@
 .cart-container {
-  width: 90%;
-  max-width: 1500px;
   display: flex;
   align-items: flex-start;
+  width: 90%;
+  max-width: 1500px;
   gap: 1em;
   margin-bottom: auto;
+}
+
+.cart-info {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: var(--txt-color);
+  transition: 0.3s ease-in-out;
+}
+
+.cart-info a {
+  color: var(--txt-color);
+  transition: 0.3s ease-in-out;
+  font-weight: 700;
 }

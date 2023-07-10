@@ -10,7 +10,6 @@ import "./CartItemList.css";
 const CartItemList = ({ items }) => {
   return (
     <div className="cart-item-list-container">
-      {console.log(items)}
       {items && items.map((item) => <CartItem item={item} key={item.id} />)}
     </div>
   );

@@ -22,8 +22,7 @@ export const fetchAddingCart = async (id, setCart) => {
 
 // Function that will remove an item from the cart
 export const fetchRemovingCart = async (id, setCart) => {
-  const { response } = await commerce.cart.remove(id);
-  setCart(response);
+  setCart(await commerce.cart.remove(id));
   toast.success("Item removed from cart", {
     position: "top-center",
     autoClose: 5000,
@@ -37,8 +36,7 @@ export const fetchRemovingCart = async (id, setCart) => {
 
 // Function that will clear the cart
 export const fetchClearCart = async (setCart) => {
-  const { response } = await commerce.cart.empty();
-  setCart(response);
+  setCart(await commerce.cart.empty());
   toast.success("Cart has been cleared", {
     position: "top-center",
     autoClose: 5000,
