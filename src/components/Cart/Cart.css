@@ -23,3 +23,11 @@
   transition: 0.3s ease-in-out;
   font-weight: 700;
 }
+
+@media (width < 650px) {
+  .cart-container {
+    --txt-size: 0.8em;
+    flex-direction: column-reverse;
+    gap: 0;
+  }
+}

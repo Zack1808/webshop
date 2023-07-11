@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 // Importing the fetching function
-import { fetchProduct } from "../api/fetchProduct";
+import { fetchProducts } from "../api/fetchProduct";
 
 // Creating the context
 const ProductsContext = React.createContext();
@@ -35,7 +35,7 @@ export const ProductsProvider = ({ children }) => {
         location.pathname.length
       );
 
-      fetchProduct(setProducts, id, sort);
+      fetchProducts(setProducts, id, sort);
     }
   }, [location]);
 
