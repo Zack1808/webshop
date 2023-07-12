@@ -7,6 +7,9 @@ import { useCart, useUpdateCart } from "../../../context/cartContext";
 // Importing the costume components
 import Button from "../../Button/Button";
 
+// Importing the actions
+import { ACTIONS } from "../../../reducers/cartReducer";
+
 // Importing the style file
 import "./Sidebar.css";
 
@@ -24,7 +27,7 @@ const Sidebar = () => {
 
   // Function that will clear the cart
   const clear = () => {
-    update("CLEAR");
+    update(ACTIONS.CLEAR_CART);
   };
 
   return (

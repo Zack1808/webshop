@@ -5,7 +5,7 @@ import {
   fetchClearCart,
 } from "../api/fetchCart";
 
-const ACTIONS = {
+export const ACTIONS = {
   ADD_ITEM: "ADD",
   REMOVE_ITEM: "REMOVE",
   CLEAR_CART: "CLEAR",

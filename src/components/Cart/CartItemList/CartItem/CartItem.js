@@ -7,6 +7,9 @@ import { useUpdateCart } from "../../../../context/cartContext";
 // Importing the costume components
 import Button from "../../../Button/Button";
 
+// Importing the actions
+import { ACTIONS } from "../../../../reducers/cartReducer";
+
 // Importing the style file
 import "./CartItem.css";
 
@@ -20,7 +23,7 @@ const CartItem = ({ item }) => {
 
   // Function that will remove item from the cart
   const remove = () => {
-    update("REMOVE", item.id);
+    update(ACTIONS.REMOVE_ITEM, item.id);
   };
 
   return (

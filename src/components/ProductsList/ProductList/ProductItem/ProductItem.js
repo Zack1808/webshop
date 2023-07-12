@@ -10,6 +10,9 @@ import { useUpdateCart } from "../../../../context/cartContext";
 // Importing the style file
 import "./ProductItem.css";
 
+// Importing the actions
+import { ACTIONS } from "../../../../reducers/cartReducer";
+
 // Creating the ProductItem component
 const ProductItem = ({ product }) => {
   // Setting up the intersection observer
@@ -20,7 +23,7 @@ const ProductItem = ({ product }) => {
 
   // Function that will add the item to the cart
   const addItem = () => {
-    update("ADD", product.id);
+    update(ACTIONS.ADD_ITEM, product.id);
   };
 
   return (
