@@ -4,6 +4,7 @@
   gap: 10px;
   padding: 0.5em 0;
   align-items: center;
+  cursor: pointer;
   font-size: var(--txt-size);
 }
 
@@ -15,6 +16,10 @@
   aspect-ratio: 1/1;
   background-color: var(--bg-color);
   transition: background-color 0.3s ease-in-out;
+}
+
+.checkbox-container label {
+  cursor: pointer;
 }
 
 .checkbox-container input {

@@ -27,7 +27,7 @@ const Checkbox = ({ label = "label", slug = "slug" }) => {
   };
 
   return (
-    <div className="checkbox-container">
+    <div className="checkbox-container" onClick={updateChecked}>
       <div className="checkbox" onClick={updateChecked}>
         {checked && <UilCheck />}
       </div>

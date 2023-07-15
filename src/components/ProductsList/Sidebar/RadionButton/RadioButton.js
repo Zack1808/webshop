@@ -12,7 +12,7 @@ const RadioButton = ({
   ariaName = "radio",
 }) => {
   return (
-    <div className="radio-container">
+    <div className="radio-container" onClick={() => updateChecked(name)}>
       <div
         className={`radio ${active ? "active" : ""}`}
         onClick={() => updateChecked(name)}
