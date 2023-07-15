@@ -77,16 +77,30 @@ const ProductInfo = () => {
                 <p>{product.price.formatted_with_symbol}</p>
               </div>
               <div className="buttons">
-                <Button text="Add to cart" click={addToCart} />
+                {product.inventory.available > 0 ? (
+                  <Button text="Add to cart" click={addToCart} />
+                ) : null}
                 <Button text="Read specs" click={scrollToView} />
               </div>
             </div>
           </div>
-          <div
-            ref={ref}
-            className="specs"
-            dangerouslySetInnerHTML={{ __html: product.description }}
-          ></div>
+          {product.description.toLowerCase().includes("specifications") ? (
+            <div
+              ref={ref}
+              className="specs"
+              dangerouslySetInnerHTML={{ __html: product.description }}
+            ></div>
+          ) : (
+            <div className="specs" ref={ref}>
+              <strong>
+                <em>Specifications</em>
+              </strong>
+              <div
+                className="specs"
+                dangerouslySetInnerHTML={{ __html: product.description }}
+              ></div>
+            </div>
+          )}
         </div>
       ) : (
         <Loader />

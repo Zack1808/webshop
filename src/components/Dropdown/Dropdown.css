@@ -68,3 +68,8 @@ span.active {
 .dropdown-items.active .dropdown-item {
   opacity: 1;
 }
+
+.dropdown-items.active .dropdown-item:hover {
+  background-color: var(--bg-color);
+  transition: 0.3s ease-in-out;
+}
