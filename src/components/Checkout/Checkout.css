@@ -1,0 +1,30 @@
+/* Styling the Checkout component */
+.checkout-container {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  max-width: 1000px;
+}
+
+.checkout {
+  padding: 20px;
+  background-color: var(--container-color);
+  clip-path: polygon(
+    1.5em 0%,
+    calc(100% - 1.5em) 0%,
+    100% 1.5em,
+    100% calc(100% - 1.5em),
+    calc(100% - 1.5em) 100%,
+    1.5em 100%,
+    0% calc(100% - 1.5em),
+    0% 1.5em
+  );
+  opacity: 0;
+  transform: scale(0.8);
+  transition: 0.3s ease-in-out;
+}
+
+.checkout.active {
+  opacity: 1;
+  transform: scale(1);
+}
