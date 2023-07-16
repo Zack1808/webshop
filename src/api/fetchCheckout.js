@@ -1,5 +1,5 @@
 import { commerce } from "./commerceInit";
-import { ACTIONS, cartReducer } from "../reducers/cartReducer";
+import { ACTIONS } from "../reducers/cartReducer";
 
 // Function that will handle the checkout
 export const fetchCheckout = async (
@@ -11,7 +11,7 @@ export const fetchCheckout = async (
 ) => {
   try {
     setOrder(await commerce.checkout.capture(tokenId, newOrder));
-    cartReducer(ACTIONS.REFRESH, setCart);
+    setCart(ACTIONS.REFRESH);
   } catch (err) {
     setErr(err.data.error.message);
   }

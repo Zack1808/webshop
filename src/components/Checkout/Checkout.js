@@ -14,6 +14,7 @@ import Loader from "../Loader/Loader";
 import Stepper from "./Stepper/Stepper";
 import AddressForm from "./AddressForm/AddressForm";
 import PaymentForm from "./PaymentForm/PaymentForm";
+import Confirmation from "./Confirmation/Confirmation";
 
 // Importing the style file
 import "./Checkout.css";
@@ -25,7 +26,7 @@ const Checkout = () => {
   const setCart = useUpdateCart();
 
   // Setting up the state
-  const [step, setStep] = useState(2);
+  const [step, setStep] = useState(1);
   const [token, setToken] = useState(null);
   const [data, setData] = useState({});
   const [err, setErr] = useState("");
@@ -81,8 +82,7 @@ const Checkout = () => {
               handleCheckout={handleCheckout}
             />
           )}
-          {console.log(order)}
-          {console.log(err)}
+          {step === 3 && <Confirmation order={order} err={err} />}
         </div>
       ) : (
         <Loader />

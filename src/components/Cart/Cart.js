@@ -23,6 +23,7 @@ const Cart = () => {
         cart.line_items.length !== 0 ? (
           <>
             <CartItemList items={cart.line_items} />
+            {console.log(cart)}
             <Sidebar />
           </>
         ) : (
