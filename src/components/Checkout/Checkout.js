@@ -11,6 +11,7 @@ import { generateToken } from "../../api/fetchToken";
 // Importing the costume components
 import Loader from "../Loader/Loader";
 import Stepper from "./Stepper/Stepper";
+import AddressForm from "./AddressForm/AddressForm";
 
 // Importing the style file
 import "./Checkout.css";
@@ -23,6 +24,7 @@ const Checkout = () => {
   // Setting up the state
   const [step, setStep] = useState(1);
   const [token, setToken] = useState(null);
+  const [data, setData] = useState({});
 
   // Setting up the history hook
   const history = useNavigate();
@@ -44,10 +46,11 @@ const Checkout = () => {
 
   // Rerouting the user if the cart is empty
   useEffect(() => {
-    console.log(cart);
-    cart.id && cart.total_items === 0
-      ? history("/", { replace: true })
-      : generateToken(cart, setToken);
+    if (cart.id && cart.total_items === 0) {
+      history("/", { replace: true });
+    } else {
+      generateToken(cart, setToken);
+    }
 
     // eslint-disable-next-line
   }, [cart]);
@@ -57,6 +60,10 @@ const Checkout = () => {
       {token ? (
         <div className={`checkout ${inView ? "active" : ""}`} ref={ref}>
           <Stepper step={step} steps={steps} />
+          {step === 1 && (
+            <AddressForm token={token} setData={setData} setStep={setStep} />
+          )}
+          {console.log(data)}
         </div>
       ) : (
         <Loader />

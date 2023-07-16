@@ -1,0 +1,21 @@
+/* Styling the AddressForm component */
+.address-container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: visible;
+}
+
+.input-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  position: relative;
+}
+
+@media (width < 650px) {
+  .input-grid {
+    grid-template-columns: 1fr;
+  }
+}

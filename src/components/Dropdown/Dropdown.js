@@ -6,10 +6,17 @@ import { UilAngleDown } from "@iconscout/react-unicons";
 import "./Dropdown.css";
 
 // Creating the Dropdown component
-const Dropdown = ({ links, items = [] }) => {
+const Dropdown = ({
+  links,
+  items = [],
+  dark,
+  placeholder = "Choose one...",
+  hasSelection,
+  setSelection,
+}) => {
   // Setting up state
   const [active, setActive] = useState(false);
-  const [selected, setSelected] = useState("Choose one...");
+  const [selected, setSelected] = useState("");
 
   // Setting up the ref
   const dropRef = useRef();
@@ -48,7 +55,7 @@ const Dropdown = ({ links, items = [] }) => {
         className="dropdown-container"
         onClick={() => setActive((prevState) => !prevState)}
       >
-        <div className="dropdown-selected">
+        <div className={`dropdown-selected ${dark ? "darker" : ""}`}>
           {selected}
           <span className={active ? "active" : ""}>
             <UilAngleDown />
@@ -75,6 +82,12 @@ const Dropdown = ({ links, items = [] }) => {
       </div>
     );
 
+  // Functions that will handle the selection
+  const handleClick = (item) => {
+    setSelected(item.label);
+    setSelection(item.id);
+  };
+
   // Basic Dropdown
   return (
     <div
@@ -82,8 +95,8 @@ const Dropdown = ({ links, items = [] }) => {
       className="dropdown-container"
       onClick={() => setActive((prevState) => !prevState)}
     >
-      <div className="dropdown-selected">
-        {selected}
+      <div className={`dropdown-selected ${dark ? "darker" : ""}`}>
+        {selected === "" || !hasSelection ? placeholder : selected}
         <span className={active ? "active" : ""}>
           <UilAngleDown />
         </span>
@@ -94,13 +107,14 @@ const Dropdown = ({ links, items = [] }) => {
             delay += 0.07;
             return (
               <div
-                key={item}
+                key={item.id}
                 className="dropdown-item"
                 style={{
                   transition: active && `opacity .3s ${delay}s`,
                 }}
+                onClick={() => handleClick(item)}
               >
-                {item}
+                {item.label}
               </div>
             );
           })}

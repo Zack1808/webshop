@@ -26,6 +26,7 @@
 
 .step span {
   border: 2px solid var(--txt-color);
+  font-weight: 700;
   display: flex;
   width: 30px;
   aspect-ratio: 1 / 1;
@@ -39,7 +40,6 @@
 .step span.active {
   background-color: var(--txt-color);
   color: var(--container-color);
-  transform: rotate(0deg);
 }
 
 .step small {

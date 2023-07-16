@@ -30,8 +30,9 @@
 }
 
 ::placeholder {
-  font-weight: 900;
+  font-weight: 700;
   font-size: var(--text-size);
+  color: var(--txt-color);
   transition: color 0.4s ease-in-out;
 }
 
