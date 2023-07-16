@@ -12,6 +12,7 @@ import { generateToken } from "../../api/fetchToken";
 import Loader from "../Loader/Loader";
 import Stepper from "./Stepper/Stepper";
 import AddressForm from "./AddressForm/AddressForm";
+import PaymentForm from "./PaymentForm/PaymentForm";
 
 // Importing the style file
 import "./Checkout.css";
@@ -22,7 +23,7 @@ const Checkout = () => {
   const cart = useCart();
 
   // Setting up the state
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(2);
   const [token, setToken] = useState(null);
   const [data, setData] = useState({});
 
@@ -63,7 +64,7 @@ const Checkout = () => {
           {step === 1 && (
             <AddressForm token={token} setData={setData} setStep={setStep} />
           )}
-          {console.log(data)}
+          {step === 2 && <PaymentForm token={token} setStep={setStep} />}
         </div>
       ) : (
         <Loader />

@@ -36,6 +36,8 @@ const AddressForm = ({ setStep, token, setData }) => {
   // Fetching the countries
   useEffect(() => {
     fetchShippingCountries(token, setCountry);
+
+    // eslint-disable-next-line
   }, [token]);
 
   // Fetching the regions
@@ -43,12 +45,16 @@ const AddressForm = ({ setStep, token, setData }) => {
     setSelectedSubdivision("");
     setSelectedOption("");
     fetchSubdivisions(selectedCountry, setSubdivision);
+
+    // eslint-disable-next-line
   }, [selectedCountry]);
 
   // Fetching the shipping options
   useEffect(() => {
     setSelectedOption("");
     fetchOptions(token, selectedCountry, selectedSubdivision, setOptions);
+
+    // eslint-disable-next-line
   }, [selectedSubdivision]);
 
   // Function taht will handle the submition of the form

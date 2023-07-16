@@ -15,7 +15,7 @@
 /* Styling light mode */
 :root {
   --bg-color: hsl(0 0% 90%);
-  --txt-color: hsl(0 0% 10%);
+  --txt-color: hsl(0, 0%, 10%);
   --container-color: hsl(0 0% 85%);
   --btn-bg: hsl(0 0% 10%);
   --btn-text: hsl(0 0% 90%);
@@ -48,7 +48,7 @@
 /* Styling the dark mode */
 .dark {
   --bg-color: hsl(0 0% 20%);
-  --txt-color: hsl(0 0% 90%);
+  --txt-color: hsl(0, 0%, 90%);
   --container-color: hsl(0 0% 30%);
   --btn-bg: hsl(0 0% 90%);
   --navbar-bg: hsl(0 0% 10%);
