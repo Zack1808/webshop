@@ -31,3 +31,9 @@
   );
   transition: 0.3s ease-in-out;
 }
+
+@media (width < 650px) {
+  .payment-container form .buttons {
+    flex-direction: column;
+  }
+}

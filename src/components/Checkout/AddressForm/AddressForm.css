@@ -18,4 +18,8 @@
   .input-grid {
     grid-template-columns: 1fr;
   }
+
+  .address-container .buttons {
+    flex-direction: column;
+  }
 }

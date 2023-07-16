@@ -20,7 +20,7 @@ import "./PaymentForm.css";
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_API_KEY);
 
 // Creating the PaymentForm component
-const PaymentForm = ({ token, setStep, shippingData }) => {
+const PaymentForm = ({ token, setStep, shippingData, handleCheckout }) => {
   // Setting up the state
   const [filled, setFilled] = useState(false);
 
@@ -42,6 +42,53 @@ const PaymentForm = ({ token, setStep, shippingData }) => {
 
   let styling = dark ? darkMode : lightMode;
 
+  // Function that will handle the submition of the form
+  const handleSubmit = async (e, elements, stripe) => {
+    e.preventDefault();
+    if (!stripe || !elements) return;
+    const cardElement = elements.getElement(CardElement);
+    const { error, paymentMethod } = await stripe.createPaymentMethod({
+      type: "card",
+      card: cardElement,
+    });
+    if (error) console.log(error);
+    else {
+      const orderData = {
+        line_items: token.line_items,
+        customer: {
+          firstname: shippingData.firstName,
+          lastname: shippingData.lastName,
+          email: shippingData.email,
+        },
+        billing: {
+          name: "Primary",
+          street: shippingData.address,
+          town_city: shippingData.city,
+          county_state: shippingData.shippingRegion,
+          postal_zip_code: shippingData.zip,
+          country: shippingData.shippingCountry,
+        },
+        shipping: {
+          name: "Primary",
+          street: shippingData.address,
+          town_city: shippingData.city,
+          county_state: shippingData.shippingRegion,
+          postal_zip_code: shippingData.zip,
+          country: shippingData.shippingCountry,
+        },
+        fulfillment: { shipping_method: shippingData.shippingOption },
+        payment: {
+          gateway: "stripe",
+          stripe: {
+            payment_method_id: paymentMethod.id,
+          },
+        },
+      };
+      handleCheckout(token.id, orderData);
+      setStep((previousStep) => previousStep + 1);
+    }
+  };
+
   return (
     <div className="payment-container">
       <ItemsReview token={token} />
@@ -49,7 +96,7 @@ const PaymentForm = ({ token, setStep, shippingData }) => {
       <Elements stripe={stripePromise}>
         <ElementsConsumer>
           {({ elements, stripe }) => (
-            <form>
+            <form onSubmit={(e) => handleSubmit(e, elements, stripe)}>
               <div className="card-input">
                 <CardElement
                   options={{
@@ -68,7 +115,12 @@ const PaymentForm = ({ token, setStep, shippingData }) => {
                   type="button"
                   click={() => setStep((prevState) => prevState - 1)}
                 />
-                {filled && stripe && <Button text={`Pay ${token.subtotal.formatted_with_symbol}`} click={()=> setStep(prevState => prevState + 1)} />}
+                {filled && stripe && (
+                  <Button
+                    text={`Pay ${token.subtotal.formatted_with_symbol}`}
+                    type="submit"
+                  />
+                )}
               </div>
             </form>
           )}

@@ -47,3 +47,8 @@ export const fetchClearCart = async (setCart) => {
     theme: "dark",
   });
 };
+
+// Function that will refresh the cart
+export const fetchRefreshCart = async (setCart) => {
+  setCart(await commerce.cart.refresh());
+};
