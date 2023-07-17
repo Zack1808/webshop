@@ -58,6 +58,10 @@
   transition: 0.3s ease-in-out;
 }
 
+.big .dropdown-items {
+  max-height: 450px;
+}
+
 .dropdown-selected.darker .dropdown-items {
   background-color: var(--bg-color);
 }

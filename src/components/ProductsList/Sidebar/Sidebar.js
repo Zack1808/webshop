@@ -85,28 +85,30 @@ const Sidebar = () => {
           </span>
         </h2>
         <div className={`forms ${form ? "active" : ""}`}>
-          <form>
-            <h3 onClick={() => setCheck((prevState) => !prevState)}>
-              Categories{" "}
-              <span className={check ? "active" : ""}>
-                <UilAngleDown />
-              </span>
-            </h3>
-            <div className={`checks ${check ? "active" : ""}`}>
-              {id &&
-                categories.map((category) => {
-                  if (category.id === id)
-                    return category.children.map((child) => (
-                      <Checkbox
-                        key={child.id}
-                        label={child.name}
-                        slug={child.slug}
-                      />
-                    ));
-                  else return null;
-                })}
-            </div>
-          </form>
+          {location && location.pathname.includes("/category") && (
+            <form>
+              <h3 onClick={() => setCheck((prevState) => !prevState)}>
+                Categories{" "}
+                <span className={check ? "active" : ""}>
+                  <UilAngleDown />
+                </span>
+              </h3>
+              <div className={`checks ${check ? "active" : ""}`}>
+                {id &&
+                  categories.map((category) => {
+                    if (category.id === id)
+                      return category.children.map((child) => (
+                        <Checkbox
+                          key={child.id}
+                          label={child.name}
+                          slug={child.slug}
+                        />
+                      ));
+                    else return null;
+                  })}
+              </div>
+            </form>
+          )}
           <form>
             <h3 onClick={() => setRadio((prevState) => !prevState)}>
               Sort by price

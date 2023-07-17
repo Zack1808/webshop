@@ -14,3 +14,14 @@ export const fetchProducts = async (setProducts, id, sort) => {
 export const fetchProduct = async (setProduct, id) => {
   setProduct(await commerce.products.retrieve(id));
 };
+
+// Fetchning the product with the searched query
+export const fetchSearchedProduct = async (query, setProduct, sort) => {
+  const { data } = await commerce.products.list({ query });
+  if (data) {
+    setProduct(data);
+    sort(true);
+  } else {
+    setProduct("no items");
+  }
+};

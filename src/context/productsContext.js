@@ -2,15 +2,20 @@ import React, { useState, useContext, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 // Importing the fetching function
-import { fetchProducts } from "../api/fetchProduct";
+import { fetchProducts, fetchSearchedProduct } from "../api/fetchProduct";
 
 // Creating the context
 const ProductsContext = React.createContext();
+const searchProductContext = React.createContext();
 const sortProductContext = React.createContext();
 
 // Exporting the hooks for accessing the context
 export const useProducts = () => {
   return useContext(ProductsContext);
+};
+
+export const useSearchProduct = () => {
+  return useContext(searchProductContext);
 };
 
 export const useSort = () => {
@@ -39,6 +44,11 @@ export const ProductsProvider = ({ children }) => {
     }
   }, [location]);
 
+  // Function taht will fetch the searched Product
+  const search = (query) => {
+    fetchSearchedProduct(query, setProducts, sort);
+  };
+
   // Function that will sort the products
   const sort = (asc) => {
     asc
@@ -56,7 +66,9 @@ export const ProductsProvider = ({ children }) => {
   return (
     <ProductsContext.Provider value={products}>
       <sortProductContext.Provider value={sort}>
-        {children}
+        <searchProductContext.Provider value={search}>
+          {children}
+        </searchProductContext.Provider>
       </sortProductContext.Provider>
     </ProductsContext.Provider>
   );

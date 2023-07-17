@@ -30,13 +30,14 @@ const Dropdown = ({
   // Getting the current category
   useEffect(() => {
     if (links)
-      location &&
-        setSelected(
-          location.pathname.slice(
-            location.pathname.lastIndexOf("/") + 1,
-            location.pathname.lastIndexOf("&")
+      location && location.pathname.includes("/categories")
+        ? setSelected(
+            location.pathname.slice(
+              location.pathname.lastIndexOf("/") + 1,
+              location.pathname.lastIndexOf("&")
+            )
           )
-        );
+        : setSelected("Choose a category...");
 
     // eslint-disable-next-line
   }, []);
@@ -52,7 +53,7 @@ const Dropdown = ({
     return (
       <div
         ref={dropRef}
-        className="dropdown-container"
+        className="dropdown-container big"
         onClick={() => setActive((prevState) => !prevState)}
       >
         <div className={`dropdown-selected ${dark ? "darker" : ""}`}>
