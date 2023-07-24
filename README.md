@@ -45,7 +45,7 @@ If you want to run the app localy:
 
 `npm install`
 
-#### 4. Settup the API key
+#### 4. Settup the API keys
 
 Within the project directory, create the .env file. In there create the variable REACT_APP_YT_API_KEY
 
